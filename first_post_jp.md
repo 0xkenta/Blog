@@ -7,7 +7,7 @@
 
 コンポーサビリティの定義
 
-英語の辞書で探してもComposabilityという単語は出てきません。O'Reillyのページに記載されている定義では
+英語の辞書で探してもComposabilityという単語は出てきません。O’Reillyのページに記載されている定義では
 
 Composability: This is the ability to interact with any other component, be re-combined to form new behaviors.
 
