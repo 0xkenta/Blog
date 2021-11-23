@@ -49,8 +49,8 @@ Dev Protocolについて
 
 ＊Dev Protocolが提供するインターフェースについて
 
-Dev Protocolにアクセスする方法は２つあります。一つ目はSolidityを使いDev Protocolのスマートコントラクトに直接アクセスする方法。これについてはhttps://docs.devprotocol.xyz/en/developers/tools/interfaces/を参考にしてください。二つ目は、Dev Protocol開発チームが提供するDev Kitを使う方法です。Dev Kitはweb3 jsを通じてDev Protocolにアクセスしていて、JavaScript, TypeScriptで使用することが可能です。
-Dev Kitについては、*https://docs.devprotocol.xyz/en/developers/tools/dev-kit/)に詳しく書かれています。
+Dev Protocolにアクセスする方法は２つあります。一つ目はSolidityを使いDev Protocolのスマートコントラクトに直接アクセスする方法。これについては(https://docs.devprotocol.xyz/en/developers/tools/interfaces/)を参考にしてください。二つ目は、Dev Protocol開発チームが提供するDev Kitを使う方法です。Dev Kitはweb3 jsを通じてDev Protocolにアクセスしていて、JavaScript, TypeScriptで使用することが可能です。
+Dev Kitについては、(https://docs.devprotocol.xyz/en/developers/tools/dev-kit/)に詳しく書かれています。
 
 
 最後に
