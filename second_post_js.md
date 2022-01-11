@@ -33,12 +33,12 @@ metadataを取得するには、ERC721の場合まずtokenURI()に、NFTのtoken
 
 OpenSeaサイトでは次のようなmetadataの例が挙げられています。
 
-{
-  "description": "Friendly OpenSea Creature that enjoys long swims in the ocean.", 
-  "external_url": "https://openseacreatures.io/3", 
-  "image": "https://storage.googleapis.com/opensea-prod.appspot.com/puffs/3.png", 
-  "name": "Dave Starbelly",
-  "attributes": [ ... ], 
+{__
+  "description": "Friendly OpenSea Creature that enjoys long swims in the ocean.",__ 
+  "external_url": "https://openseacreatures.io/3", __
+  "image": "https://storage.googleapis.com/opensea-prod.appspot.com/puffs/3.png",__ 
+  "name": "Dave Starbelly",__
+  "attributes": [ ... ], __
 }
 
 
