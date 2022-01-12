@@ -52,46 +52,46 @@ metadataは個々のNFTの情報です。例えば、”image”にあるhttpま
 
 これでNFTのmetadataがどのようなものか理解できたと思います。
 
-# sToken
+# sTokens
 
 NFTというとアート、動画、音楽などをOpenSeaに代表されるマーケットプレイスを通じて購入することをイメージすると思います。しかし、Dev Protocolについて詳しい方はご存じだと思いますが、Dev ProtocolもNFTを発行しています。ここからはDev ProtocolのNFTについてみていきます。
 
 ## どうやったらDev ProtocolのNFTがもらえるのか？
 
-Dev Protocolが提供するNFTはsTokenといいます。sTokenとはどのようなものでしょうか？以下の引用が説明してくれます。
+Dev Protocolが提供するNFTはsTokensといいます。sTokensとはどのようなものでしょうか？以下の引用が説明してくれます。
 
->sTokenとは（エストークン：Staking Tokenの略）、パトロンがクリエイターを支援したとき(スーテクしたとき)、パトロンにステーキングの証明書として与えられるNFTです。
+>sTokensとは（エストークン：Staking Tokenの略）、パトロンがクリエイターを支援したとき(スーテクしたとき)、パトロンにステーキングの証明書として与えられるNFTです。
 
 Dev ProtocolのNFTは、ステーキングしたときにもらえるトークン。このステーキングされた時に発行される、ということを覚えておいてください
 
 ## Dev ProtocolのNFTの特徴とは？
 
-新しいsTokenの特徴として、クリエイターがsTokenにイラスト、画像を紐づけられることがあります。
+新しいsTokensの特徴として、クリエイターがsTokensにイラスト、画像を紐づけられることがあります。
 
 
 一度まとめてみます。
 
-①Dev ProtocolのNFTであるsTokenはステーキングの証明としてもらえる。
+①Dev ProtocolのNFTであるsTokensはステーキングの証明としてもらえる。
 
-②クリエイターはsTokenにイラストや画像を追加できる。
+②クリエイターはsTokensにイラストや画像を追加できる。
 
-（簡単にsTokenについて説明しましたが詳しくはここを見てください。）
+（簡単にsTokensについて説明しましたが詳しくはここを見てください。）
 
-## sTokenのmetadataとは？
+## sTokensのmetadataとは？
 
-もうお分かりですね、上記の二つの情報がsTokenのmetadataの中に入っているはずです。
+もうお分かりですね、上記の二つの情報がsTokensのmetadataの中に入っているはずです。
 
-それでは見ていきます。Dev ProtocolのSTokensManager.solの中に、先ほど説明したtokenURL()があります。Dev Protocolではこの関数がBASE64を返します。このBASE64をデコードするとjsonで表記されたmetadataになります。sTokenのmetadataではname, description, imageの３つの情報を保有しています。
+それでは見ていきます。Dev ProtocolのsTokensManager.solの中に、先ほど説明したtokenURL()があります。Dev Protocolではこの関数がBASE64を返します。このBASE64をデコードするとjsonで表記されたmetadataになります。sTokensのmetadataではname, description, imageの３つの情報を保有しています。
 
 ①“name”の部分にはステーキングしたpropertyのアドレス、そしてステーキングしたDEVの数が記されています。
 
 ②imageの部分にはデフォルトでbase64にエンコードされた画像情報が保存されています。この部分はクリエイターが自身の作品のIPFS URLをセットすることもできます。
 
-このようにsTokenのmetadataにはステーキング、そしてクリエイターの表現したものという、Dev Protocolを象徴する情報が入っています。
+このようにsTokensのmetadataにはステーキング、そしてクリエイターの表現したものという、Dev Protocolを象徴する情報が入っています。
 
 # 最後に
 
-今回はNFTのmetadataについて取り上げました。すでにステーキングをされた方は、自身のsTokenのmetadataを探してみてください。これからステーキングを考えている方は、クリエイターが提供するアート機能を参考にステーキング先を選ぶのも面白いかもしれません。最後まで読んでいただきありがとうごいました。
+今回はNFTのmetadataについて取り上げました。すでにステーキングをされた方は、自身のsTokensのmetadataを探してみてください。これからステーキングを考えている方は、クリエイターが提供するアート機能を参考にステーキング先を選ぶのも面白いかもしれません。最後まで読んでいただきありがとうごいました。
 
 ## 参考資料
 
