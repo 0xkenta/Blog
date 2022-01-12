@@ -10,7 +10,7 @@ NFTについては多くのところで説明されているので、ここで�
 
 Metadataとは、
 
-">data that provides information about other data"
+>data that provides information about other data.
 他のデータについての情報を提供するデータ
 (Merriam Websterから引用)
 
@@ -18,12 +18,12 @@ Metadataとは、
 
 ではNFTにおけるmetadataとはなんでしょうか？EIP-721では次のように説明されています。
 
-">The metadata extension is OPTIONAL for ERC-721 smart contracts. This allows your smart contract to be interrogated for its name and for details about the assets which your NFTs represent."
+>The metadata extension is OPTIONAL for ERC-721 smart contracts. This allows your smart contract to be interrogated for its name and for details about the assets which your NFTs represent.
 
 metadataはERC721のオプションで、NFTが表す資産についての名前や詳細について........
 この文章を訳すのは難しいので、他の引用を見てみます。
 
-">NFT metadata defines the NFT as an object, i.e., details about the digital asset."
+>NFT metadata defines the NFT as an object, i.e., details about the digital asset.
 metadataはNFTをオブジェクト、すなわちデジタル資産についての詳細である。（IPFS Blogから引用）
 
 まとめるとmetadataには個々のNFTの情報が入っているといえます。
@@ -58,7 +58,7 @@ NFTというとアート、動画、音楽などをOpenSeaに代表されるマ�
 
 Dev Protocolが提供するNFTはsTokenといいます。sTokenとはどのようなものでしょうか？以下の引用が説明してくれます。
 
-">sTokenとは（エストークン：Staking Tokenの略）、パトロンがクリエイターを支援したとき(スーテクしたとき)、パトロンにステーキングの証明書として与えられるNFTです。"
+>sTokenとは（エストークン：Staking Tokenの略）、パトロンがクリエイターを支援したとき(スーテクしたとき)、パトロンにステーキングの証明書として与えられるNFTです。
 
 Dev ProtocolのNFTは、ステーキングしたときにもらえるトークン。このステーキングされた時に発行される、ということを覚えておいてください
 
