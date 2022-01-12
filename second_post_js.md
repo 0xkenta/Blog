@@ -78,9 +78,9 @@ sTokenのmetadataとは？
 
 それでは見ていきます。Dev ProtocolのSTokensManager.solの中に、先ほど説明したtokenURL()があります。Dev Protocolではこの関数がBASE64を返します。このBASE64をデコードするとjsonで表記されたmetadataになります。sTokenのmetadataではname, description, imageの３つの情報を保有しています。
 
-①“name”の部分にはステたpropertyのアドレス、そしてステーキングしたDEVの数が記されています。
+①“name”の部分にはステーキングしたpropertyのアドレス、そしてステーキングしたDEVの数が記されています。
 
-②”image”の部分にはIPFS URL収められています。この”image”の部分はクリエイターが自らのイラスト、画像に変更できるところです。
+②imageの部分にはデフォルトでbase64にエンコードされた画像情報が保存されています。この部分はクリエイターが自身の作品のIPFS URLをセットすることもできます。
 
 このようにsTokenにはステーキング、そしてクリエイターの表現したものという、Dev Protocolを象徴する情報が入っています。
 
