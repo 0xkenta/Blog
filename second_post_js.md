@@ -75,7 +75,7 @@ Dev ProtocolのNFTは、ステーキングしたときにもらえるトーク�
 
 ②クリエイターはsTokensにイラストや画像を追加できる。
 
-（簡単にsTokensについて説明しましたが詳しくはここを見てください。）
+（簡単にsTokensについて説明しましたが詳しくは[ここ](https://initto.devprotocol.xyz/ja/s-token-update/)を見てください。）
 
 ## sTokensのmetadataとは？
 
