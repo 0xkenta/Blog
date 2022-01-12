@@ -8,11 +8,11 @@ There are so many explanations of what NFT is. So we dive directly into the meta
 
 ## What is metadata?
 
-Metadata is defined as data that provides information about other data.(quote from Merriam Webster)
+>Metadata is defined as data that provides information about other data.(quote from Merriam Webster)
 
 In the case of NFT, EIP-721 explains that 
 
-The metadata extension is OPTIONAL for ERC-721 smart contracts. This allows your smart contract to be interrogated for its name and for details about the assets which your NFTs represent.
+>The metadata extension is OPTIONAL for ERC-721 smart contracts. This allows your smart contract to be interrogated for its name and for details about the assets which your NFTs represent.
 
 In another word, metadata is the properties of each NFT.
 
@@ -44,7 +44,7 @@ You may imagine that you purchase Art, image, and music on the marketplace like 
 
 NFT of Dev Protocol is called sToken. So what exactly is sToken? The next quote tells us what sToken is.
 
-sToken is an NFT given as a certificate of staking to patrons when they support (stake) creators.
+>sToken is an NFT given as a certificate of staking to patrons when they support (stake) creators.
 
 sToken is a token that is provided by staking. Please keep in mind that.
 
