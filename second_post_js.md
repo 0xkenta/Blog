@@ -55,7 +55,7 @@ NFTというとアート、動画、音楽などをOpenSeaに代表されるマ�
 
 どうやったらDev ProtocolのNFTがもらえるのか？
 
-Dev Protocolが提供するNFTはsTokenといいます。ｓTokenとはどのようなものでしょうか？以下の引用が説明してくれます。
+Dev Protocolが提供するNFTはsTokenといいます。sTokenとはどのようなものでしょうか？以下の引用が説明してくれます。
 
 sTokenとは（エストークン：Staking Tokenの略）、パトロンがクリエイターを支援したとき(スーテクしたとき)、パトロンにステーキングの証明書として与えられるNFTです。
 
@@ -63,11 +63,11 @@ Dev ProtocolのNFTは、ステーキングしたときにもらえるトーク�
 
 Dev ProtocolのNFTの特徴とは？
 
-新しいSTokenの特徴として、クリエイターがsTokenにイラスト、画像を紐づけられることがあります。
+新しいsTokenの特徴として、クリエイターがsTokenにイラスト、画像を紐づけられることがあります。
 
 一度まとめてみます。
 
-①Dev ProtocolのNFTであるｓTokenはステーキングの証明としてもらえる。
+①Dev ProtocolのNFTであるsTokenはステーキングの証明としてもらえる。
 ②クリエイターはsTokenにイラストや画像を追加できる。
 
 （簡単にsTokenについて説明しましたが詳しくはここを見てください。）
