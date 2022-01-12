@@ -30,7 +30,7 @@ The OpenSea page gives the following example of metadata.
   "name": "Dave Starbelly",
   "attributes": [ ... ], 
 }
-```json
+```
 
 Usage of metadata?
 
