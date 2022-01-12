@@ -93,4 +93,4 @@ Openzeppelin forum, How to provide metadata for ERC721,
 https://forum.openzeppelin.com/t/how-to-provide-metadata-for-erc721/4057/3
  
 Yusuke Ikeda, Launching NFT art function of sToken,
-https://initto.devprotocol.xyz/ja/s-token-update/
+https://initto.devprotocol.xyz/en/s-token-update/
