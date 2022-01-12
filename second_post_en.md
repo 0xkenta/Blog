@@ -8,7 +8,7 @@ There are so many explanations of what NFT is. So we dive directly into the meta
 
 ## What is metadata?
 
-Metadata is defined as data that provides information about other data.
+Metadata is defined as data that provides information about other data.(quote from Merriam Webster)
 
 In the case of NFT, EIP-721 explains that 
 

@@ -12,6 +12,7 @@ Metadataとは、
 
 data that provides information about other data
 他のデータについての情報を提供するデータ
+(Merriam Websterから引用)
 
 と定義されています。
 
@@ -23,7 +24,7 @@ metadataはERC721のオプションで、NFTが表す資産についての名前
 この文章を訳すのは難しいので、他の引用を見てみます。
 
 NFT metadata defines the NFT as an object, i.e., details about the digital asset.
-metadataはNFTをオブジェクト、すなわちデジタル資産についての詳細である。
+metadataはNFTをオブジェクト、すなわちデジタル資産についての詳細である。（IPFS Blogから引用）
 
 まとめるとmetadataには個々のNFTの情報が入っているといえます。
 
