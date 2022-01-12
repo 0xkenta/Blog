@@ -58,7 +58,7 @@ Here I summarizethe NFT of Dev Protocol.
 
 ②Creators can put additional a unipue asset into NFT
 
-Please check this post if you want to know the detail of sTokens.
+Please check [this post](https://initto.devprotocol.xyz/en/s-token-update/) if you want to know the detail of sTokens.
 
 ## sTokens of metadata?
 
