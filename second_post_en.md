@@ -64,7 +64,7 @@ Please check this post if you want to know the detail of sTokens.
 
 Maybe you know already what metadata of Dev Protocol NFT contains. There must be above 2 pieces of information in the metadata. 
 
-In sTokensManager.sol of Dev Protocol, you can find the tokenURL function that we talked about. This function returns Base64. If you try to decode this Base64 you can see metadata that is written with JSON schema. This metadata is composed of 3 properties “name”, “description”, and “image”.
+In STokensManager.sol of Dev Protocol, you can find the tokenURL function that we talked about. This function returns Base64. If you try to decode this Base64 you can see metadata that is written with JSON schema. This metadata is composed of 3 properties “name”, “description”, and “image”.
 
 ①“name” describes pieces of information about the Property Address that you staked and the amount of staking.
 

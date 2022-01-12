@@ -81,7 +81,7 @@ Dev ProtocolのNFTは、ステーキングしたときにもらえるトーク�
 
 もうお分かりですね、上記の二つの情報がsTokensのmetadataの中に入っているはずです。
 
-それでは見ていきます。Dev ProtocolのsTokensManager.solの中に、先ほど説明したtokenURL()があります。Dev Protocolではこの関数がBASE64を返します。このBASE64をデコードするとjsonで表記されたmetadataになります。sTokensのmetadataではname, description, imageの３つの情報を保有しています。
+それでは見ていきます。Dev ProtocolのSTokensManager.solの中に、先ほど説明したtokenURL()があります。Dev Protocolではこの関数がBASE64を返します。このBASE64をデコードするとjsonで表記されたmetadataになります。sTokensのmetadataではname, description, imageの３つの情報を保有しています。
 
 ①“name”の部分にはステーキングしたpropertyのアドレス、そしてステーキングしたDEVの数が記されています。
 
