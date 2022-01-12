@@ -1,12 +1,12 @@
-はじめに
+# はじめに
 
 2021年、web3の領域においては多くの変化がありました。中でも大きな話題の一つにNFTがあります。著名人の購入、大企業の参入、老舗オークションハウスにおける販売など多くのNFTに関するニュースを目にしました。読者の中にも、実際に購入された方もいるのではないでしょうか。しかし、NFTのmetadataについてご存じの人はあまりいないと思います。今回のブログではNFTのmetadata、そしてDev ProtocolのNFTがもつmetadataについてみていきます。
 
-NFTのmetadata
+# NFTのmetadata
 
 NFTについては多くのところで説明されているので、ここで説明はしません。ここではNFTのmetadataについて詳しくみていきます。
 
-Metadataとは？
+## Metadataとは？
 
 Metadataとは、
 
@@ -27,7 +27,7 @@ metadataはNFTをオブジェクト、すなわちデジタル資産について
 
 まとめるとmetadataには個々のNFTの情報が入っているといえます。
 
-どうやってmetadataを取得するか？
+## どうやってmetadataを取得するか？
 
 metadataを取得するには、ERC721の場合まずtokenURI()に、NFTのtoken idを渡すことによってhttpまたはIPFS URLを取得します(ERC1155の場合はurl())。このhttp、IPFS URLにアクセスすると、JSON Schemaのmetadata見ることができます。
 
@@ -43,17 +43,17 @@ OpenSeaサイトでは次のようなmetadataの例が挙げられています�
 }
 ```
 
-Metadataで何をするのか？
+## Metadataで何をするのか？
 
 metadataは個々のNFTの情報です。例えば、”image”にあるhttpまたはIPFS URLにアクセスし画像、動画を取得することができます。OpenSeaなどのマーケットプレイスは、このmetadataを表示することで個々のNFTについての情報を公開しています。
 
 これでNFTのmetadataがどのようなものか理解できたと思います。
 
-sToken
+# sToken
 
 NFTというとアート、動画、音楽などをOpenSeaに代表されるマーケットプレイスを通じて購入することをイメージすると思います。しかし、Dev Protocolについて詳しい方はご存じだと思いますが、Dev ProtocolもNFTを発行しています。ここからはDev ProtocolのNFTについてみていきます。
 
-どうやったらDev ProtocolのNFTがもらえるのか？
+## どうやったらDev ProtocolのNFTがもらえるのか？
 
 Dev Protocolが提供するNFTはsTokenといいます。sTokenとはどのようなものでしょうか？以下の引用が説明してくれます。
 
@@ -61,9 +61,10 @@ sTokenとは（エストークン：Staking Tokenの略）、パトロンがク�
 
 Dev ProtocolのNFTは、ステーキングしたときにもらえるトークン。このステーキングされた時に発行される、ということを覚えておいてください
 
-Dev ProtocolのNFTの特徴とは？
+## Dev ProtocolのNFTの特徴とは？
 
 新しいsTokenの特徴として、クリエイターがsTokenにイラスト、画像を紐づけられることがあります。
+
 
 一度まとめてみます。
 
@@ -72,7 +73,7 @@ Dev ProtocolのNFTの特徴とは？
 
 （簡単にsTokenについて説明しましたが詳しくはここを見てください。）
 
-sTokenのmetadataとは？
+## sTokenのmetadataとは？
 
 もうお分かりですね、上記の二つの情報がsTokenのmetadataの中に入っているはずです。
 
@@ -84,11 +85,11 @@ sTokenのmetadataとは？
 
 このようにsTokenのmetadataにはステーキング、そしてクリエイターの表現したものという、Dev Protocolを象徴する情報が入っています。
 
-最後に
+# 最後に
 
 今回はNFTのmetadataについて取り上げました。すでにステーキングをされた方は、自身のsTokenのmetadataを探してみてください。これからステーキングを考えている方は、クリエイターが提供するアート機能を参考にステーキング先を選ぶのも面白いかもしれません。最後まで読んでいただきありがとうごいました。
 
-参考資料
+## 参考資料
 
 https://eips.ethereum.org/EIPS/eip-721
 
