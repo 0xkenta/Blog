@@ -28,6 +28,7 @@ First, you need to get HTTP or IPFS URL by giving tokenId of NFTs to tokenURL() 
 
 The OpenSea page gives the following example of metadata.
 
+```json
 {
   "description": "Friendly OpenSea Creature that enjoys long swims in the ocean.", 
   "external_url": "https://openseacreatures.io/3", 
@@ -35,6 +36,7 @@ The OpenSea page gives the following example of metadata.
   "name": "Dave Starbelly",
   "attributes": [ ... ], 
 }
+```
 
 ## Usage of metadata?
 
