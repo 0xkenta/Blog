@@ -72,7 +72,7 @@ Maybe you already know what metadata of Dev Protocol NFT contains. There must be
 
 In STokensManager.sol of Dev Protocol, you can find the tokenURL() function that we talked about.  This function returns Base64. If you try to decode this Base64 you can see metadata that is written with JSON schema. This metadata is composed of 3 properties: “name”, “description”, and “image”.
 
-①“name” describes pieces of information about the Property Address that you staked and the amount of DEV that you  staked.
+①“name” describes pieces of information about the Property Address that you staked and the amount of DEV that you staked.
 
 ②In “image” image information that is encoded with Base64 is stored. Creators can also set IPFS URL of their own works.
 
