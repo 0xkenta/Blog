@@ -1,28 +1,33 @@
 # Introduction
 
-There were so many changes in web3 area 2021. NFT was one of their main topics. We heard much news of NFT. For example, purchases by celebrities, big companies’ collections, selling by auction houses, and so on. You might have some NFTs already. Now people take an interest in NFT. However, you probably don’t know what metadata of NFT is. In this post, I want to talk about metadata and the NFT of Dev protocol. 
+There were so many changes in the web3 area in 2021. NFT was one of the main topics, and we heard much news about it such as purchases by celebrities, big companies’ collections, seles by auction houses, etc. Some of the readers of this article have already got NFTs. There are an increasing number of people who show interest in NFTs. Despite such a trend, some people are not familiar with what metadata of NFTs is. In this post, I want to talk about metadata and the NFTs of Dev protocol. 
 
 # Metadata of NFT?
 
-There are so many explanations of what NFT is. So we dive directly into the metadata of NFT. 
+Since there are already so many references and websites telling you what NFTs are, we dive directly into the metadata of NFT. 
 
 ## What is metadata?
 
->Metadata is defined as data that provides information about other data.(quote from Merriam Webster)
+Metadata is defined as 
+
+>data that provides information about other data. (quote from Merriam Webster)
 
 In the case of NFT, EIP-721 explains that 
 
 >The metadata extension is OPTIONAL for ERC-721 smart contracts. This allows your smart contract to be interrogated for its name and for details about the assets which your NFTs represent.
 
-In another word, metadata is the properties of each NFT.
+This explanation sounds a bit technical, so let’s have a look at another description.
+
+>NFT metadata defines the NFT as an object, i.e., details about the digital asset. (quote from IPFS Blog)
+
+In other words, metadata includes individual properties of each NFTs.
 
 ## How to get metadata?
 
-First, you need to get HTTP or IPFS URL to retrieve metadata. The function tokenURL returns HTTP or IPFS URL as value. If you access this HTTP or IPFS URL, you can see metadata with JSON Schema like the below example.
+First, you need to get HTTP or IPFS URL by giving tokenId of NFTs to tokenURL() in the case of ERC721 so as to retrieve metadata. (In case of ERC1155, you’ll use url()) If you access this  HTTP or IPFS URL, you can see metadata with JSON Schema like the below example.
 
 The OpenSea page gives the following example of metadata.
 
-```json
 {
   "description": "Friendly OpenSea Creature that enjoys long swims in the ocean.", 
   "external_url": "https://openseacreatures.io/3", 
@@ -30,51 +35,51 @@ The OpenSea page gives the following example of metadata.
   "name": "Dave Starbelly",
   "attributes": [ ... ], 
 }
-```
 
 ## Usage of metadata?
 
-Metadata contains the properties of each NFT. For instance, the property “image” gives us HTTP or IPFS URL and we can access images, videos, and music with these URLs. Marketplaces like OpenSea show us the properties of NFT based on this metadata. Now you have understood what metadata of NFT is.
+Metadata contains the properties of each NFT. For instance, the property “image” gives us HTTP or IPFS URL and we can access images, videos, and music with these URLs. Marketplaces like OpenSea show us the properties of NFT based on this metadata. Now you’re starting to understand what metadata of NFT is.
 
 # sTokens?
 
-You may imagine that you purchase Art, image, and music on the marketplace like OpenSea if you think of NFT. But you can mint NFT on Dev protocol like some of you know. So let’s dive into metadata of Dev Protocol NFT.
+When it comes to NFT, you may come up with the idea of purchasing artworks, video clips, and music on the marketplace like OpenSea. If you’re well-acquainted with Dev Protocol, you may know the fact that you can mint NFT with it. From now on,  let’s dive into metadata of Dev Protocol NFT.
 
-## How to get NFT on Dev Protocol?
+## How to get  NFT on Dev Protocol?
 
 NFT of Dev Protocol is called sTokens. So what exactly is sTokens? The next quote tells us what sTokens is.
 
->sTokens is an NFT given as a certificate of staking to patrons when they support (stake) creators.
+>sToken is an NFT given as a certificate of staking to patrons when they support (stake) creators.
 
-sTokens is a token that is provided by staking. Please keep in mind that.
+sTokens are the tokens that are provided by staking. Please keep in mind this system.
 
 ## Feature of sTokens?
 
-Now creators can add illustrations or images to their minted NFT. So you can potentially get a unique asset with staking.
+The new feature of sTokens is that creators can add illustrations or images to their minted NFT and you can potentially get a unique asset with staking.
 
-Here I summarizethe NFT of Dev Protocol.
+Important points of Dev Protocol NFTs are:
 
-①A Token that proves the staking
+①Users can receive sTokens, NFTs of Dev Protocol, as a certificate of staking.
 
-②Creators can put additional a unipue asset into NFT
+②Creators can additionally put unique assets into NFT
 
 Please check [this post](https://initto.devprotocol.xyz/en/s-token-update/) if you want to know the detail of sTokens.
 
 ## sTokens of metadata?
 
-Maybe you know already what metadata of Dev Protocol NFT contains. There must be above 2 pieces of information in the metadata. 
+Maybe you already know what metadata of Dev Protocol NFT contains. There must be 2 pieces of information mentioned above in the metadata. 
 
-In STokensManager.sol of Dev Protocol, you can find the tokenURL function that we talked about. This function returns Base64. If you try to decode this Base64 you can see metadata that is written with JSON schema. This metadata is composed of 3 properties “name”, “description”, and “image”.
+In STokensManager.sol of Dev Protocol, you can find the tokenURL() function that we talked about.  This function returns Base64. If you try to decode this Base64 you can see metadata that is written with JSON schema. This metadata is composed of 3 properties: “name”, “description”, and “image”.
 
-①“name” describes pieces of information about the Property Address that you staked and the amount of staking.
+①“name” describes pieces of information about the Property Address that you staked and the amount of DEV that you  staked.
 
-②In “image” image information that is encoded with Base64 is stored.
+②In “image” image information that is encoded with Base64 is stored. Creators can also set IPFS URL of their own works.
 
-As you see, the metadata of sTokens contains some properties like staking information and unique asset by creators that exactly represent Dev protocol.
+As you see, the metadata of sTokens contains some properties like staking information and unique assets by creators that exactly represent Dev protocol.
 
 # Conclusion
 
-We went through the metadata of NFT. Please try to find metadata of your sTokens if you have already staked in Dev Protocol. If you are considering to stake, you can try to find your favorite art and stake your DEV on the creators. Thank you for reading.
+We went through the metadata of NFT this time. Please try to find metadata of your sTokens if you have already staked in Dev Protocol. If you are considering to stake, you can try to find your favorite art and stake your DEV on the creators. Thank you for reading.
+
 
 ## References
 
