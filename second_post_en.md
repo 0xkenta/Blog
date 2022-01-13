@@ -80,7 +80,7 @@ As you see, the metadata of sTokens contains some properties like staking inform
 
 # Conclusion
 
-We went through the metadata of NFT this time. Please try to find metadata of your sTokens if you have already staked in Dev Protocol. If you are considering to stake, you can try to find your favorite art and stake your DEV on the creators. Thank you for reading.
+We went through the metadata of NFT this time. Please try to find metadata of your sTokens if you have already staked in Dev Protocol. If you are considering to stake, you can try to find your favorite art and stake your DEV on the creators. Thank you for reading until the end.
 
 
 ## References
