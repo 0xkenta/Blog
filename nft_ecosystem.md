@@ -72,3 +72,14 @@ NFTのエコシステムも、他の多くのビジネス生態系と同様に�
 このブログでもみたように、NFTの発行にはトークン規格、データ保存の知識を必要とします。これらの知識をHokusaiはサービスとして提供しています。NFTを発行したいという方は、まずはHokusaiのチュートリアルを試してみてください。
 
 [Hokusaiチュートリアル](https://docs.hokusai.app/docs/hokusai/ce7dc06d5de77-hokusai)
+
+
+参考資料
+
+Niccolo Conte. What are NFTs? Mapping the NFT Ecosystem
+https://www.visualcapitalist.com/what-are-nfts-mapping-the-nft-ecosystem/
+
+Dipanjan Das. Understanding Security Issues in the NFT Ecosystem
+
+Devin Finzer. The Non-Fungible Token Bible: Everything you need to know about NFTs
+https://opensea.io/blog/guides/non-fungible-tokens/#What_is_a_non-fungible_token
