@@ -78,11 +78,11 @@ NFTのエコシステムも、他の多くのビジネス生態系と同様に�
 
 Andreas M. Antonopoulos. Mastering Ethereum
 
-Niccolo Conte. What are NFTs? Mapping the NFT Ecosystem__
+Niccolo Conte. What are NFTs? Mapping the NFT Ecosystem __
 https://www.visualcapitalist.com/what-are-nfts-mapping-the-nft-ecosystem/
 
 Dipanjan Das. Understanding Security Issues in the NFT Ecosystem
 
-Devin Finzer. The Non-Fungible Token Bible: Everything you need to know about NFTs__
+Devin Finzer. The Non-Fungible Token Bible: Everything you need to know about NFTs __
 https://opensea.io/blog/guides/non-fungible-tokens/#What_is_a_non-fungible_token
 
