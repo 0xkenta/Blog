@@ -152,7 +152,7 @@ duration = _duration;
 
 三つ目の注意点もクリアしていることが確認できました。
 
-NounsAuctionHouse.solは、ZoraのAuctionHouse.sol(https://github.com/ourzora/auction-house/blob/54a12ec1a6cf562e49f0a4917990474b11350a2d/contracts/AuctionHouse.sol)参考に作られています。Zoraのコントラクトは、Upgradeableなコントラクトとして作成されていません。興味がある方は、NounsとZoraのコントラクトを比べると、さらに理解が深まると思います。
+NounsAuctionHouse.solは、Zoraの[AuctionHouse.sol](https://github.com/ourzora/auction-house/blob/54a12ec1a6cf562e49f0a4917990474b11350a2d/contracts/AuctionHouse.sol)参考に作られています。Zoraのコントラクトは、Upgradeableなコントラクトとして作成されていません。興味がある方は、NounsとZoraのコントラクトを比べると、さらに理解が深まると思います。
 
 # 最後に
 
