@@ -7,11 +7,11 @@
 
 など、デプロイ後に変更できないスマートコントラクトは、開発を難しくすることもあります。この問題を解決するのが、Upgradeable Contractsです。
 
-Proxy patternを利用することで、コントラクトを更新することを可能にしています。Proxy Patternについては、[この記事]を参考にしてください。
+Proxy patternを利用することで、コントラクトを更新することを可能にしています。Proxy Patternについては、[この記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies#the-constructor-caveat)を参考にしてください。
 
 Upgradeableなコントラクトを作成する。少し難しいテーマのように聞こえます。Upgradeableなコントラクトを作る際、筆者は毎回Openzeppelinのサイトを参考にしています。今回のブログでは、このサイトをまとめます。そして、Upgradeableなコントラクト作成における、注意点チェックリストを作ってみたいと思います。さらに、このチェックリストをもとに、メインネットにデプロイされているUpgradeableなコントラクトを見ていきたいと思います。
 
-メインネットデプロイの際には、ご自身で参考資料を読んでください。また、テストネットで確認するなど、ご自身の責任でお願いします。
+メインネットデプロイの際には、ご自身で参考資料を読んで確認してください。また、テストネットで確認するなど、ご自身の責任でお願いします。
 
 # Upgradeabilityチェックポイント
 
@@ -26,9 +26,6 @@ solidityではコントラクトを初期化する際、constructorを使いま�
 ### initializeとは
 Proxy patternが可能にするUpgradeableなコントラクトでは、constructorによる初期化が実行されません。そのため、constructorではなく、普通の関数を利用して、コントラクトを初期化する必要があります。Upgradeableなコントラクトを読むと、initializeという関数をよく目にします。この関数がconstructorの役割を果たしています。ただし、名前自体はinitializeである必要はありません。初期化を実行する関数は、constructorと同じように一度のみ実行されるべきです。一度のみ実行されるよう、関数を実装する必要があります。さらに、普通の関数として書かれた初期化関数（initialize）は、自動で実行されません。デプロイ後、この関数を手動で実行する必要があります。
 
-
-なぜ？
-The Constructor Caveat: https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies#the-constructor-caveat
 
 ## Libraryを使う場合
 
@@ -65,7 +62,7 @@ contract Hokusai {
 
 ☐ constant variables以外のstate variablesは、initializeの中で初期化する。<br /> 
 
-以上が、代表的な注意点です。他にも、Upgradeableなコントラクト内で新しいコントラクトを作る、delegatecall、selfdestruct使う際には、注意する必要があります。気になる方は、[もとの記事]を確認して下さい。
+以上が、代表的な注意点です。他にも、Upgradeableなコントラクト内で新しいコントラクトを作る、delegatecall、selfdestruct使う際には、注意する必要があります。気になる方は、[もとの記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers)を確認して下さい。
 
 ## 具体例
 
