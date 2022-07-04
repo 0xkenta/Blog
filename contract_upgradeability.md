@@ -59,9 +59,9 @@ contract Hokusai {
 
 ## チェックリスト
 
-☐ Upgradeableなコントラクトでは、constructorがないこと、別の初期化の関数があることを確認する。
-☐ Libraryを使用する際には、初期化のための関数があるものを使用する。
-☐ constant variables以外のstate variablesは、initializeの中で初期化する。
+☐ Upgradeableなコントラクトでは、constructorがないこと、別の初期化の関数があることを確認する。<br /> 
+☐ Libraryを使用する際には、初期化のための関数があるものを使用する。<br /> 
+☐ constant variables以外のstate variablesは、initializeの中で初期化する。<br /> 
 
 以上が、代表的な注意点です。他にも、Upgradeableなコントラクト内で新しいコントラクトを作る、delegatecall、selfdestruct使う際には、注意する必要があります。気になる方は、[もとの記事]を確認して下さい。
 
