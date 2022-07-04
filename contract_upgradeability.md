@@ -22,25 +22,25 @@ constructorではなく、initializeを使う。
 solidityではコントラクトを初期化する際、constructorを使います。constructorに書かれたコードは、デプロイ前に自動で実行されます。
 
 ### initializeとは
-Proxy patternが可能にするUpgradeableなコントラクトでは、constructorによる初期化が実行されません。そのため、constructorではなく、普通の関数を利用して、コントラクトを初期化する必要があります。Upgradeableなコントラクトを読むと、initializeという関数をよく目にします。この関数がconstructorの役割を果たしています。ただし、名前自体はinitializeである必要はありません。初期化を実行する関数は、constructorと同じように一度のみ実行されるべきです。一度のみ実行されるよう、関数を実装する必要があります。さらに、普通の関数として書かれた初期化関数（initialize）は、自動で実行されません。デプロイ後、この関数を手動で実行する必要があります。
+Proxy patternが可能にするUpgradeableなコントラクトでは、constructorによる初期化が実行されません。そのため、constructorではなく、普通の関数を利用して、コントラクトを初期化する必要があります。Upgradeableなコントラクトを読むと、initializeという関数をよく目にします。この関数がconstructorの役割を果たしています。ただし、名前自体はinitializeである必要はありません。初期化を実行する関数は、constructorと同じように一度のみ実行されるべきです。一度のみ実行されるよう、関数を実装する必要があります。普通の関数として書かれた初期化関数（initialize）は、自動で実行されません。デプロイ後、この関数を手動で実行する必要があります。
 
 
 ## Libraryを使う場合
 
 Libraryも初期化のための関数を必要とする。
 
-スマートコントラクトの開発では、Libraryを使う機会が多くあります。Upgradeableなコントラクトを作るときは、Libraryの使用にも注意が必要です。先ほど書いたように、Upgradeableなコントラクトでは、constructorを使用することはできません。このことはLibraryにも当てはまります。Upgradeableなコントラクトを書く場合には、使用するLibraryにconstructorがないことを確認しましょう。
+スマートコントラクトの開発では、Libraryを使う機会が多くあります。Upgradeableなコントラクトを作るときは、Libraryの使用にも注意が必要です。先ほど書いたように、Upgradeableなコントラクトでは、constructorを使用することはできません。このことはLibraryにも当てはまります。Upgradeableなコントラクトを書く場合は、使用するLibraryにconstructorがないことを確認しましょう。
 
 例えば、OpenZeppelinは、UpgradeableなコントラクトのためのLibraryを用意しています。Upgradeableなコントラクトのinitializeの中で
 
 __Pausable_init();
 
-などの記述がみられます。これは、Libraryにあるコントラクト初期化の関数を呼び出していることを示します。
+などの記述がみられます。これは、Libraryにあるコントラクト初期化の関数を呼び出しています。
 
 
 ## state variablesの初期化は、initialize内で行う
 
-Solidityでは、state variablesを宣言する際に、初期値を代入することができます。この初期化は、constructor内での初期化と考えられます。(constant variablesに関しては、該当しません。Upgradeableなコントラクトでも、宣言と同時に初期化が可能です。)
+Solidityでは、state variablesを宣言する際に、初期値を代入することができます。この初期化は、constructor内での初期化と同様と考えられます。(constant variablesに関しては、該当しません。Upgradeableなコントラクトでも、宣言と同時に初期化が可能です。)
 
 ```
 /// 宣言と初期化
@@ -60,7 +60,7 @@ contract Hokusai {
 
 ☐ constant variables以外のstate variablesは、initializeの中で初期化する。<br /> 
 
-以上が、代表的な注意点です。他にも、Upgradeableなコントラクト内で新しいコントラクトを作る、delegatecall、selfdestruct使う際には、注意する必要があります。気になる方は、[もとの記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers)を確認して下さい。
+以上が、代表的な注意点です。他にも、Upgradeableなコントラクト内で新しいコントラクトを作る、delegatecall、selfdestruct使う際などには、注意が必要です。気になる方は、[もとの記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers)を確認して下さい。
 
 
 # 具体例
