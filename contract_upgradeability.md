@@ -65,7 +65,7 @@ contract Hokusai {
 
 ## 具体例
 
-ここからは、上記のチェックリストを使って、実際にデプロイされているコントラクトのコードを見ていきます。今回見ていくのは、Nouns DAOの[NounsAuctionHouse.sol](https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol)です。それでは見ていきます。
+ここからは、上記のチェックリストを使って、実際にデプロイされているUpgradeableなコントラクトのコードを見ていきます。今回見ていくのは、Nouns DAOの[NounsAuctionHouse.sol](https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol)です。それでは見ていきます。
 
 重要になるのは、NounsAuctionHouse.solにある、以下の関数です。
 
@@ -105,7 +105,7 @@ NounsAuctionHouse.solは以下のように、いくつかのLibraryを継承し�
 contract NounsAuctionHouse is INounsAuctionHouse, PausableUpgradeable, ReentrancyGuardUpgradeable, OwnableUpgradeable {}
 ```
 
-これらのLibraryは、OpenZeppelinが提供するUpgradeableなコントラクトのためのLibraryです。initializeの中では
+これらのLibraryは、OpenZeppelinが提供するUpgradeableなコントラクトのためのLibraryです。initializeの中では、
 
 ```
 __Pausable_init();
@@ -117,14 +117,49 @@ __Ownable_init();
 
 ### ☐ constant variables以外のstate variablesは、initializeの中で初期化する。
 
+コントラクトの中で、以下のstate variablesが宣言されています。
+
+```
+// The Nouns ERC721 token contract
+INounsToken public nouns;
+
+// The address of the WETH contract
+address public weth;
+
+// The minimum amount of time left in an auction after a new bid is created
+uint256 public timeBuffer;
+
+// The minimum price accepted in an auction
+uint256 public reservePrice;
+
+// The minimum percentage difference between the last bid amount and the current bid
+uint8 public minBidIncrementPercentage;
+
+// The duration of a single auction
+uint256 public duration;
+```
+
+これらのstate variablesは宣言されていますが、初期値が代入されていません。代入はinitialize内部で、次のように行われています。
+
+```
+nouns = _nouns;
+weth = _weth;
+timeBuffer = _timeBuffer;
+reservePrice = _reservePrice;
+minBidIncrementPercentage = _minBidIncrementPercentage;
+duration = _duration;
+```
+
+三つ目の注意点もクリアしていることが確認できました。
+
+NounsAuctionHouse.solは、ZoraのAuctionHouse.sol(https://github.com/ourzora/auction-house/blob/54a12ec1a6cf562e49f0a4917990474b11350a2d/contracts/AuctionHouse.sol)参考に作られています。Zoraのコントラクトは、Upgradeableなコントラクトとして作成されていません。興味がある方は、NounsとZoraのコントラクトを比べると、さらに理解が深まると思います。
+
+# 最後に
+
+今回のブログでは、Upgradeableなコントラクトを作成する際の注意点について紹介しました。
 
 
-
-
-
-
-
-## 参考資料
+# 参考資料
 
 Writing Upgradeable Contracts <br />
 https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable
