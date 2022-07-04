@@ -9,7 +9,7 @@
 
 Proxy patternを利用することで、コントラクトを更新することを可能にしています。Proxy Patternについては、[この記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies#the-constructor-caveat)を参考にしてください。
 
-Upgradeableなコントラクトを作成する。少し難しいテーマのように聞こえます。Upgradeableなコントラクトを作る際、筆者は毎回Openzeppelinのサイトを参考にしています。今回のブログでは、このサイトをまとめます。そして、Upgradeableなコントラクト作成における、注意点チェックリストを作ってみたいと思います。さらに、このチェックリストをもとに、メインネットにデプロイされているUpgradeableなコントラクトを見ていきたいと思います。
+Upgradeableなコントラクトを作成する。少し難しいテーマのように聞こえます。Upgradeableなコントラクトを作る際、筆者は毎回Openzeppelinの[サイト](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers)を参考にしています。今回のブログでは、このサイトをまとめます。そして、Upgradeableなコントラクト作成における、注意点チェックリストを作ってみたいと思います。さらに、このチェックリストをもとに、メインネットにデプロイされているUpgradeableなコントラクトを見ていきたいと思います。
 
 メインネットデプロイの際には、ご自身で参考資料を読んで確認してください。また、テストネットで確認するなど、ご自身の責任でお願いします。
 
