@@ -9,13 +9,11 @@
 
 Proxy patternを利用することで、コントラクトを更新することを可能にしています。Proxy Patternについては、[この記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies#the-constructor-caveat)を参考にしてください。
 
-Upgradeableなコントラクトを作成する。少し難しいテーマのように聞こえます。Upgradeableなコントラクトを作る際、筆者は毎回Openzeppelinの[サイト](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers)を参考にしています。今回のブログでは、このサイトをまとめます。そして、Upgradeableなコントラクト作成における、注意点チェックリストを作ってみたいと思います。さらに、このチェックリストをもとに、メインネットにデプロイされているUpgradeableなコントラクトを見ていきたいと思います。
+Upgradeableなコントラクトを作成する。少し難しいテーマのように聞こえます。Upgradeableなコントラクトを作る際、筆者は毎回OpenZeppelinの[サイト](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers)を参考にしています。今回のブログでは、このサイトをまとめます。そして、Upgradeableなコントラクト作成における、注意点チェックリストを作ってみたいと思います。さらに、このチェックリストをもとに、メインネットにデプロイされているUpgradeableなコントラクトを見ていきたいと思います。
 
 メインネットデプロイの際には、ご自身で参考資料を読んで確認してください。また、テストネットで確認するなど、ご自身の責任でお願いします。
 
 # Upgradeabilityチェックポイント
-
-特に、constructors are replaced by initializer functions, state variables are initialized in initializer functions, and we additionally check for storage incompatibilities across minor versions.
 
 ## initializeを使う
 constructorではなく、initializeを使う。
@@ -31,7 +29,7 @@ Proxy patternが可能にするUpgradeableなコントラクトでは、construc
 
 Libraryも初期化のための関数を必要とする。
 
-スマートコントラクトの開発では、Libraryを使う機会が多くあります。Upgradeableなコントラクトを作るときは、Libraryの使用にも注意が必要です。上記に書いたように、Upgradeableなコントラクトでは、constructorを使用することはできません。このことはLibraryにも当てはまります。Upgradeableなコントラクトを書く場合には、使用するLibraryにconstructorがないことを確認しましょう。
+スマートコントラクトの開発では、Libraryを使う機会が多くあります。Upgradeableなコントラクトを作るときは、Libraryの使用にも注意が必要です。先ほど書いたように、Upgradeableなコントラクトでは、constructorを使用することはできません。このことはLibraryにも当てはまります。Upgradeableなコントラクトを書く場合には、使用するLibraryにconstructorがないことを確認しましょう。
 
 例えば、OpenZeppelinは、UpgradeableなコントラクトのためのLibraryを用意しています。Upgradeableなコントラクトのinitializeの中で
 
@@ -64,15 +62,69 @@ contract Hokusai {
 
 以上が、代表的な注意点です。他にも、Upgradeableなコントラクト内で新しいコントラクトを作る、delegatecall、selfdestruct使う際には、注意する必要があります。気になる方は、[もとの記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers)を確認して下さい。
 
+
 ## 具体例
 
 ここからは、上記のチェックリストを使って、実際にデプロイされているコントラクトのコードを見ていきます。今回見ていくのは、Nouns DAOの[NounsAuctionHouse.sol](https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol)です。それでは見ていきます。
 
+重要になるのは、NounsAuctionHouse.solにある、以下の関数です。
+
+```
+ function initialize(
+    INounsToken _nouns,
+    address _weth,
+    uint256 _timeBuffer,
+    uint256 _reservePrice,
+    uint8 _minBidIncrementPercentage,
+    uint256 _duration
+) external initializer {
+    __Pausable_init();
+    __ReentrancyGuard_init();
+    __Ownable_init();
+
+    _pause();
+
+    nouns = _nouns;
+    weth = _weth;
+    timeBuffer = _timeBuffer;
+    reservePrice = _reservePrice;
+    minBidIncrementPercentage = _minBidIncrementPercentage;
+    duration = _duration;
+}
+```
+
 ### ☐ Upgradeableなコントラクトでは、constructorがないこと、別の初期化の関数があることを確認する。
 
+まず、NounsAuctionHouse.solにconstructorは存在しません。代わりに、initializeが使われています。チェックリストの１つ目は満たされていることが分かります。また、initializeではinitializerというOpenZeppelinのLibraryが使われています。これにより、この関数は初期化の際、一度のみ使用されることになります。
+
+### ☐ Libraryを使用する際には、初期化のための関数があるものを使用する。
+
+NounsAuctionHouse.solは以下のように、いくつかのLibraryを継承しています。
+
+```
+contract NounsAuctionHouse is INounsAuctionHouse, PausableUpgradeable, ReentrancyGuardUpgradeable, OwnableUpgradeable {}
+```
+
+これらのLibraryは、OpenZeppelinが提供するUpgradeableなコントラクトのためのLibraryです。initializeの中では
+
+```
+__Pausable_init();
+__ReentrancyGuard_init(); 
+__Ownable_init();
+```
+
+を使い、これらのLibraryを初期化しています。チェックリストの二つ目もクリアしています。
+
+### ☐ constant variables以外のstate variablesは、initializeの中で初期化する。
 
 
 
+
+
+
+
+
+## 参考資料
 
 Writing Upgradeable Contracts <br />
 https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable
