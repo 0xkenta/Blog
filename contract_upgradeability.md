@@ -2,16 +2,17 @@
 
 スマートコントラクトの特徴の一つとして、Censorship resistanceがあげられます。ネットワークにデプロイされたコントラクトは、変更することができません。誰にも変更できないスマートコントラクトは、利点として考えられます。その一方、開発者にとっては、難しい特徴ともいえます。例えば、
 
-①細心の注意を払って書いたコントラクトに生じたバグ
+①デプロイしたコントラクトに生じたバグ
 ②新しい機能の追加
 
 など、デプロイ後に変更できないスマートコントラクトは、開発を難しくすることもあります。この問題を解決するのが、Upgradeable Contractsです。
 
-Proxy patternを利用することで、コントラクトを更新することを可能にしています。Proxy Patternについては、[この記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies#the-constructor-caveat)を参考にしてください。
+Proxy patternを利用することで、コントラクトを更新することを可能にしています。Proxy Patternについて詳しく知りたい方は、[この記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies#the-constructor-caveat)を参考にしてください。
 
-Upgradeableなコントラクトを作成する。少し難しいテーマのように聞こえます。Upgradeableなコントラクトを作る際、筆者は毎回OpenZeppelinの[サイト](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers)を参考にしています。今回のブログでは、このサイトをまとめます。そして、Upgradeableなコントラクト作成における、注意点チェックリストを作ってみたいと思います。さらに、このチェックリストをもとに、メインネットにデプロイされているUpgradeableなコントラクトを見ていきたいと思います。
+Upgradeableなコントラクトを作成する。少し難しいテーマのように聞こえます。Upgradeableなコントラクトを作る際、筆者は毎回OpenZeppelinのサイトを参考にしています。今回のブログでは、これらのサイトをまとめます。そして、Upgradeableなコントラクト作成における、注意点チェックリストを作ってみたいと思います。さらに、このチェックリストをもとに、メインネットにデプロイされているUpgradeableなコントラクトを見ていきます。
 
 メインネットデプロイの際には、ご自身で参考資料を読んで確認してください。また、テストネットで確認するなど、ご自身の責任でお願いします。
+
 
 # Upgradeabilityチェックポイント
 
@@ -154,9 +155,10 @@ duration = _duration;
 
 NounsAuctionHouse.solは、Zoraの[AuctionHouse.sol](https://github.com/ourzora/auction-house/blob/54a12ec1a6cf562e49f0a4917990474b11350a2d/contracts/AuctionHouse.sol)参考に作られています。Zoraのコントラクトは、Upgradeableなコントラクトとして作成されていません。興味がある方は、NounsとZoraのコントラクトを比べると、さらに理解が深まると思います。
 
+
 # 最後に
 
-今回のブログでは、Upgradeableなコントラクトを作成する際の注意点について紹介しました。
+今回のブログでは、Upgradeableなコントラクトを作成する際の注意点について紹介しました。Upgradeableなコントラクトは、開発において大きなメリットをもたらします。ぜひ試してみてください。メインネットにデプロイを予定される方は、ご自身で以下に記載する参考資料などを読んでコントラクトを作成してください。
 
 
 # 参考資料
