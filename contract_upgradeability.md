@@ -41,7 +41,7 @@ __Pausable_init();
 
 ## state variablesの初期化は、initialize内で行う
 
-Solidityでは、state variablesを宣言する際に、初期値を代入することができます。この初期化は、constructor内での初期化と同様と考えられます。(constant variablesに関しては、該当しません。Upgradeableなコントラクトでも、宣言と同時に初期化が可能です。)
+Solidityでは、state variablesを宣言する際に、初期値を代入することができます。この初期化は、constructor内での初期化と同様と考えられます(constant variablesに関しては、該当しません。Upgradeableなコントラクトでも、constant variablesは宣言と同時に初期化が可能です)
 
 ```
 /// 宣言と初期化
@@ -52,6 +52,17 @@ contract Hokusai {
 
 これまで書いた二つの注意点と同様の理由から、state variablesの初期化もinitializeの中で実行する必要があります。
 
+```
+/// Upgradeableなコントラクトにおける初期化
+contract Hokusai {
+    string public name;
+
+    function initialize() external initializer {
+        name = "Hokusai";
+    }
+}
+```
+
 
 ## チェックリスト
 
@@ -61,7 +72,7 @@ contract Hokusai {
 
 ☐ constant variables以外のstate variablesは、initializeの中で初期化する。<br /> 
 
-以上が、代表的な注意点です。他にも、Upgradeableなコントラクト内で新しいコントラクトを作る、delegatecall、selfdestruct使う際などには、注意が必要です。気になる方は、[もとの記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers)を確認して下さい。
+以上が、代表的な注意点です。他にも、Upgradeableなコントラクト内で、新しいコントラクトを作る、delegatecall、selfdestruct使う際などには、注意が必要です。気になる方は、[もとの記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers)を確認して下さい。
 
 
 # 具体例
@@ -175,16 +186,4 @@ https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies#the-constructor-cavea
 Using with Upgrades <br />
 https://docs.openzeppelin.com/contracts/4.x/upgradeable
 
-<!-- ## upgradeability check lists
-
-- [ ]  use initialize instead of constrcutor
-- [ ]  use Initializable to prevent a contract from being *initialized*
- multiple times
-- [ ]  use upgradeable smart cntract libraries
-    - import statement
-    - inherit
-    - in initialize
-- [ ]  avoid initializing values in field declarations(except constants variables)
-- [ ]  initialize the implementation contract with _disableInitializers()
-- [ ]  in case of creating new instances from the contract code -->
 
