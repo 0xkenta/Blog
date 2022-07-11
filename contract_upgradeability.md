@@ -41,7 +41,7 @@ __Pausable_init();
 
 ## state variablesの初期化は、initialize内で行う
 
-Solidityでは、state variablesを宣言する際に、初期値を代入することができます。この初期化は、constructor内での初期化と同様と考えられます(constant variablesに関しては、該当しません。Upgradeableなコントラクトでも、constant variablesは宣言と同時に初期化が可能です)
+Solidityでは、state variablesを宣言する際に、初期値を代入することができます。この初期化は、constructor内での初期化と同様と考えられます。
 
 ```
 /// 宣言と初期化
@@ -50,7 +50,7 @@ contract Hokusai {
 } 
 ```
 
-これまで書いた二つの注意点と同様の理由から、state variablesの初期化もinitializeの中で実行する必要があります。
+これまで書いた二つの注意点と同様の理由から、state variablesの初期化もinitializeの中で実行する必要があります。(constant variablesに関しては、該当しません。Upgradeableなコントラクトでも、constant variablesは宣言と同時に初期化が可能です)
 
 ```
 /// Upgradeableなコントラクトにおける初期化
