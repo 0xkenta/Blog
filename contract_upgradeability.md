@@ -1,11 +1,15 @@
+# このブログの対象読者
+①Upgradeableなコントラクトを作ろうと考えている方。
+②Solidityのlow level function delegatecallについて聞いたこと、理解している方。
+
 # はじめに
 
-スマートコントラクトの特徴の一つとして、Censorship resistanceがあげられます。ネットワークにデプロイされたコントラクトは、変更することができません。誰にも変更できないスマートコントラクトは、利点として考えられます。その一方、開発者にとっては難しい特徴ともいえます。例えば、
+スマートコントラクトの特徴の一つとして、Censorship resistanceがあげられます。ネットワークにデプロイされたコントラクトは、変更することができません。誰にも変更できないスマートコントラクトは、利点として考えられます。DApps（Decentralized Applications）を使うユーザーにとっては、知らないうちにアプリケーションのロジックが変更されることがありません。そのため、安心してアプリケーションを使うことができます。その一方、開発者にとっては難しい特徴ともいえます。例えば、
 
 ①デプロイしたコントラクトに生じたバグ <br />
 ②新しい機能の追加
 
-など、デプロイ後に変更できないスマートコントラクトは、開発を難しくすることもあります。この問題を解決するのが、Upgradeable Contractsです。
+などの際に、コントラクトを変更できません。この問題を解決するのが、Upgradeable Contractsです。
 
 Proxy patternを利用することで、コントラクトを更新することを可能にしています。Proxy Patternについて詳しく知りたい方は、[この記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies#the-constructor-caveat)を参考にしてください。
 
@@ -14,32 +18,30 @@ Upgradeableなコントラクトを作成する。少し難しいテーマのよ
 メインネットデプロイの際には、ご自身で参考資料を読んで確認してください。また、テストネットで確認するなど、ご自身の責任でお願いします。
 
 
-# Upgradeabilityチェックポイント
+# Upgradeabilityチェックリスト
 
-## initializeを使う
+## constructorがないこと、初期化関数が別に定義されていることを確認する
 constructorではなく、initializeを使う。
 
-### construcotrについて
+### constructorについて
 solidityではコントラクトを初期化する際、constructorを使います。constructorに書かれたコードは、デプロイ前に自動で実行されます。
 
-### initializeとは
-Proxy patternが可能にするUpgradeableなコントラクトでは、constructorによる初期化が実行されません。そのため、constructorではなく、普通の関数を利用して、コントラクトを初期化する必要があります。Upgradeableなコントラクトを読むと、initializeという関数をよく目にします。この関数がconstructorの役割を果たしています。ただし、名前自体はinitializeである必要はありません。初期化を実行する関数は、constructorと同じように一度のみ実行されるべきです。一度のみ実行されるよう、関数を実装する必要があります。普通の関数として書かれた初期化関数（initialize）は、自動で実行されません。デプロイ後、この関数を手動で実行する必要があります。
+### initialize関数とは
+Proxy patternが可能にするUpgradeableなコントラクトでは、constructorによる初期化が実行されません。そのため、constructorではなく、普通の関数を利用して、コントラクトを初期化する必要があります。Upgradeableなコントラクトを読むと、initializeという関数をよく目にします。この関数がconstructorの役割を果たしています。初期化を実行する関数は、constructorと同じように一度のみ実行されるべきです。一度のみ実行されるよう、関数を実装する必要があります。普通の関数として書かれた初期化関数（initialize）は、自動で実行されません。デプロイ後、この関数を手動で実行する必要があります。初期化関数の名前は、initializeである必要はありません。
 
 
-## Libraryを使う場合
+## Libraryを使用する際には、初期化のための関数があるものを使用する
 
-Libraryも初期化のための関数を必要とする。
+スマートコントラクトの開発では、ライブラリを使う機会が多くあります。Upgradeableなコントラクトを作るときは、ライブラリの使用にも注意が必要です。先ほど書いたように、Upgradeableなコントラクトでは、constructorを使用することはできません。このことはライブラリにも当てはまります。Upgradeableなコントラクトを書く場合は、使用するライブラリにconstructorがないことを確認しましょう。
 
-スマートコントラクトの開発では、Libraryを使う機会が多くあります。Upgradeableなコントラクトを作るときは、Libraryの使用にも注意が必要です。先ほど書いたように、Upgradeableなコントラクトでは、constructorを使用することはできません。このことはLibraryにも当てはまります。Upgradeableなコントラクトを書く場合は、使用するLibraryにconstructorがないことを確認しましょう。
-
-例えば、OpenZeppelinは、UpgradeableなコントラクトのためのLibraryを用意しています。Upgradeableなコントラクトのinitializeの中で
+例えば、OpenZeppelinは、[Upgradeableなコントラクトのためのライブラリ](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable)を用意しています。[Upgradeableなコントラクト](https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol#L70-L72)のinitializeの中で
 
 __Pausable_init();
 
-などの記述がみられます。これは、Libraryにあるコントラクト初期化の関数を呼び出しています。
+などの記述がみられます。これは、OpenZeppelinの[PausableUpgradeableライブラリ](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/master/contracts/security/PausableUpgradeable.sol)にある、コントラクト初期化の関数を呼び出しています。
 
 
-## state variablesの初期化は、initialize内で行う
+## constant variables以外のstate variablesは、initializeの中で初期化する
 
 Solidityでは、state variablesを宣言する際に、初期値を代入することができます。この初期化は、constructor内での初期化と同様と考えられます。
 
@@ -66,7 +68,7 @@ contract Hokusai {
 
 ## チェックリスト
 
-☐ Upgradeableなコントラクトでは、constructorがないこと、別の初期化の関数があることを確認する。<br /> 
+☐ constructorがないこと、初期化関数が別に定義されていること。<br /> 
 
 ☐ Libraryを使用する際には、初期化のための関数があるものを使用する。<br /> 
 
@@ -77,7 +79,7 @@ contract Hokusai {
 
 # 具体例
 
-ここからは、上記のチェックリストを使って、実際にデプロイされているUpgradeableなコントラクトのコードを見ていきます。今回見ていくのは、Nouns DAOの[NounsAuctionHouse.sol](https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol)です。それでは見ていきます。
+ここからは、上記のチェックリストを使って、実際にデプロイされているUpgradeableなコントラクトのコードを見ていきます。今回見ていくのは、Nouns DAOの[NounsAuctionHouse.sol](https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol)です。Nouns DAOはフルオンチェーンのNFTプロジェクトです。NFTだけではなく、DAOによる運営にも注目が集まるプロジェクトです。NounsAuctionHouse.solでは、毎日一つのNoun（NFT）がオークションに出されています。それでは見ていきます。
 
 重要になるのは、NounsAuctionHouse.solにある、以下の関数です。
 
@@ -169,7 +171,7 @@ NounsAuctionHouse.solは、Zoraの[AuctionHouse.sol](https://github.com/ourzora/
 
 # 最後に
 
-今回のブログでは、Upgradeableなコントラクトを作成する際の注意点について紹介しました。Upgradeableなコントラクトは、開発において大きなメリットをもたらします。ぜひ試してみてください。メインネットにデプロイを予定される方は、ご自身で以下に記載する参考資料などを読んでコントラクトを作成してください。
+今回のブログでは、Upgradeableなコントラクトを作成する際の注意点について紹介しました。Upgradeableなコントラクトは、開発の柔軟性を上げるなど、開発において大きなメリットをもたらします。ぜひ試してみてください。
 
 
 # 参考資料
