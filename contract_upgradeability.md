@@ -15,7 +15,7 @@
 
 今回のブログでは、Upgradeableなコントラストについて解説しているサイトをまとめます。そして、Upgradeableなコントラクト作成における、注意点チェックリストを作ってみたいと思います。さらに、このチェックリストをもとに、メインネットにデプロイされているUpgradeableなコントラクトを見ていきます。
 
-メインネットデプロイの際には、ご自身で参考資料を読んで確認してください。また、テストネットで確認するなど、ご自身の責任でお願いします。
+なお、コントラクトをメインネットにデプロイする際には、ご自身で参考資料を読み、テストネットで動作を確認するなど、ご自身の責任でお願いします。
 
 Upgradeableなコントラストは、Proxy Patternを利用することで可能になります。Proxy Patternについて詳しく知りたい方は、[この記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies#the-constructor-caveat)を参考にしてください。
 
@@ -81,7 +81,7 @@ contract Hokusai {
 
 # 具体例
 
-ここからは、上記のチェックリストを使って、実際にデプロイされているUpgradeableなコントラクトのコードを見ていきます。今回見ていくのは、[Nouns DAO](https://nouns.wtf/)の[NounsAuctionHouse.sol](https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol)です。Nouns DAOはフルオンチェーンのNFTプロジェクトです。NFTだけではなく、DAOによる運営にも注目が集まるプロジェクトです。NounsAuctionHouse.solでは、毎日一つのNoun（NFT）がオークションに出されています。それでは見ていきます。
+ここからは、上記のチェックリストを使って、実際にデプロイされているUpgradeableなコントラクトのコードを見ていきます。今回見ていくのは、[Nouns DAO](https://nouns.wtf/)の[NounsAuctionHouse.sol](https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol)です。Nouns DAOはフルオンチェーンのNFTプロジェクトです。NFTだけではなく、DAOによる運営にも注目が集まっています。NounsAuctionHouse.solでは、毎日一つのNoun（NFT）がオークションに出されています。それでは見ていきます。
 
 重要になるのは、NounsAuctionHouse.solにある、以下の関数です。
 
