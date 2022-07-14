@@ -8,16 +8,16 @@
 
 スマートコントラクトの特徴の一つとして、Censorship resistanceがあげられます。ネットワークにデプロイされたコントラクトは、変更することができません。誰にも変更できないスマートコントラクトは、利点として考えられます。DApps（Decentralized Applications）を使うユーザーにとっては、知らないうちにアプリケーションのロジックが変更されることがありません。そのため、安心してアプリケーションを使うことができます。その一方、開発者にとっては難しい特徴ともいえます。例えば、
 
-①デプロイしたコントラクトに生じたバグ <br />
+①デプロイしたコントラクトに生じたバグへの対処<br />
 ②新しい機能の追加
 
 などの際に、コントラクトを変更できません。この問題を解決するのが、Upgradeable Contractsです。
 
-Proxy patternを利用することで、コントラクトを更新することを可能にしています。Proxy Patternについて詳しく知りたい方は、[この記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies#the-constructor-caveat)を参考にしてください。
-
-Upgradeableなコントラクトを作成する。少し難しいテーマのように聞こえます。Upgradeableなコントラクトを作る際、筆者は毎回OpenZeppelinのサイトを参考にしています。今回のブログでは、これらのサイトをまとめます。そして、Upgradeableなコントラクト作成における、注意点チェックリストを作ってみたいと思います。さらに、このチェックリストをもとに、メインネットにデプロイされているUpgradeableなコントラクトを見ていきます。
+今回のブログでは、Upgradeableなコントラストについて解説しているサイトをまとめます。そして、Upgradeableなコントラクト作成における、注意点チェックリストを作ってみたいと思います。さらに、このチェックリストをもとに、メインネットにデプロイされているUpgradeableなコントラクトを見ていきます。
 
 メインネットデプロイの際には、ご自身で参考資料を読んで確認してください。また、テストネットで確認するなど、ご自身の責任でお願いします。
+
+Upgradeableなコントラストは、Proxy Patternを利用することで可能になります。Proxy Patternについて詳しく知りたい方は、[この記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies#the-constructor-caveat)を参考にしてください。
 
 
 # Upgradeabilityチェックリスト
