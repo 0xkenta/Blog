@@ -81,7 +81,7 @@ contract Hokusai {
 
 # 具体例
 
-ここからは、上記のチェックリストを使って、実際にデプロイされているUpgradeableなコントラクトのコードを見ていきます。今回見ていくのは、Nouns DAOの[NounsAuctionHouse.sol](https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol)です。Nouns DAOはフルオンチェーンのNFTプロジェクトです。NFTだけではなく、DAOによる運営にも注目が集まるプロジェクトです。NounsAuctionHouse.solでは、毎日一つのNoun（NFT）がオークションに出されています。それでは見ていきます。
+ここからは、上記のチェックリストを使って、実際にデプロイされているUpgradeableなコントラクトのコードを見ていきます。今回見ていくのは、[Nouns DAO](https://nouns.wtf/)の[NounsAuctionHouse.sol](https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol)です。Nouns DAOはフルオンチェーンのNFTプロジェクトです。NFTだけではなく、DAOによる運営にも注目が集まるプロジェクトです。NounsAuctionHouse.solでは、毎日一つのNoun（NFT）がオークションに出されています。それでは見ていきます。
 
 重要になるのは、NounsAuctionHouse.solにある、以下の関数です。
 
@@ -168,7 +168,7 @@ duration = _duration;
 
 三つ目の注意点もクリアしていることが確認できました。
 
-NounsAuctionHouse.solは、Zoraの[AuctionHouse.sol](https://github.com/ourzora/auction-house/blob/54a12ec1a6cf562e49f0a4917990474b11350a2d/contracts/AuctionHouse.sol)参考に作られています。Zoraのコントラクトは、Upgradeableなコントラクトとして作成されていません。興味がある方は、NounsとZoraのコントラクトを比べると、さらに理解が深まると思います。
+NounsAuctionHouse.solは、Zoraの[AuctionHouse.sol](https://github.com/ourzora/auction-house/blob/54a12ec1a6cf562e49f0a4917990474b11350a2d/contracts/AuctionHouse.sol)参考に作られています。Zoraのコントラクトは、Upgradeableなコントラクトとして作成されていません。興味がある方は、Nounsと[Zora](https://zora.co/)のコントラクトを比べると、さらに理解が深まると思います。
 
 
 # 最後に
