@@ -22,6 +22,15 @@ Upgradeableなコントラクトを作成する。少し難しいテーマのよ
 
 # Upgradeabilityチェックリスト
 
+## チェックリスト
+
+☐ constructorがないこと、初期化関数が別に定義されていること。<br /> 
+
+☐ Libraryを使用する際には、初期化のための関数があるものを使用する。<br /> 
+
+☐ constant variables以外のstate variablesは、initializeの中で初期化する。<br /> 
+
+
 ## constructorがないこと、初期化関数が別に定義されていることを確認する
 constructorではなく、initializeを使う。
 
@@ -66,16 +75,6 @@ contract Hokusai {
     }
 }
 ```
-
-# Upgradeabilityチェックリスト
-
-## チェックリスト
-
-☐ constructorがないこと、初期化関数が別に定義されていること。<br /> 
-
-☐ Libraryを使用する際には、初期化のための関数があるものを使用する。<br /> 
-
-☐ constant variables以外のstate variablesは、initializeの中で初期化する。<br /> 
 
 以上が、代表的な注意点です。他にも、Upgradeableなコントラクト内で、新しいコントラクトを作る、delegatecall、selfdestruct使う際などには、注意が必要です。気になる方は、[もとの記事](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers)を確認して下さい。
 
