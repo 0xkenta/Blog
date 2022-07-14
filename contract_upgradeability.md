@@ -1,3 +1,5 @@
+# Upgradeableなコントラクトを作ろう１
+
 # このブログの対象読者
 ①Upgradeableなコントラクトを作ろうと考えている方。
 ②Solidityのlow level function delegatecallについて聞いたこと、理解している方。
@@ -27,7 +29,7 @@ constructorではなく、initializeを使う。
 solidityではコントラクトを初期化する際、constructorを使います。constructorに書かれたコードは、デプロイ前に自動で実行されます。
 
 ### initialize関数とは
-Proxy patternが可能にするUpgradeableなコントラクトでは、constructorによる初期化が実行されません。そのため、constructorではなく、普通の関数を利用して、コントラクトを初期化する必要があります。Upgradeableなコントラクトを読むと、initializeという関数をよく目にします。この関数がconstructorの役割を果たしています。初期化を実行する関数は、constructorと同じように一度のみ実行されるべきです。一度のみ実行されるよう、関数を実装する必要があります。普通の関数として書かれた初期化関数（initialize）は、自動で実行されません。デプロイ後、この関数を手動で実行する必要があります。初期化関数の名前は、initializeである必要はありません。
+Proxy patternが可能にするUpgradeableなコントラクトでは、constructorによる初期化が実行されません。そのため、constructorではなく、普通の関数を利用して、コントラクトを初期化する必要があります。Upgradeableなコントラクトを読むと、initializeという関数をよく目にします。この関数がconstructorの役割を果たしています。普通の関数として書かれた初期化関数（initialize）は、自動で実行されません。デプロイ後、この関数を手動で実行する必要があります。初期化を実行する関数は、constructorと同じように一度のみ実行されるべきです。一度のみ実行されるよう、関数を実装する必要があります。初期化関数の名前は、initializeである必要はありません。
 
 
 ## Libraryを使用する際には、初期化のための関数があるものを使用する
