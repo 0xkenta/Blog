@@ -36,7 +36,7 @@ Proxy patternが可能にするUpgradeableなコントラクトでは、construc
 
 スマートコントラクトの開発では、ライブラリを使う機会が多くあります。Upgradeableなコントラクトを作るときは、ライブラリの使用にも注意が必要です。先ほど書いたように、Upgradeableなコントラクトでは、constructorを使用することはできません。このことはライブラリにも当てはまります。Upgradeableなコントラクトを書く場合は、使用するライブラリにconstructorがないことを確認しましょう。
 
-例えば、OpenZeppelinは、[Upgradeableなコントラクトのためのライブラリ](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable)を用意しています。[Upgradeableなコントラクト](https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol#L70-L72)のinitializeの中で
+例えば、OpenZeppelinは、[Upgradeableなコントラクトのためのライブラリ](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable)を用意しています。[Upgradeableなコントラクト](https://github.com/nounsDAO/nouns-monorepo/blob/master/packages/nouns-contracts/contracts/NounsAuctionHouse.sol#L70)のinitializeの中で
 
 __Pausable_init();
 
