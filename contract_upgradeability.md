@@ -67,6 +67,7 @@ contract Hokusai {
 }
 ```
 
+# Upgradeabilityチェックリスト
 
 ## チェックリスト
 
