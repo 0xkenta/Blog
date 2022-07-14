@@ -1,7 +1,7 @@
 # Upgradeableなコントラクトを作ろう１
 
 # このブログの対象読者
-①Upgradeableなコントラクトを作ろうと考えている方。
+①Upgradeableなコントラクトを作ろうと考えている方。<br />
 ②Solidityのlow level function delegatecallについて聞いたこと、理解している方。
 
 # はじめに
