@@ -9,7 +9,7 @@
 
 突然ですが、問題です。Etherscanには、二つの異なるアカウントの種類があります。両者の違いはどこにあるでしょう？
 
-ヒントです。イーサリアムのアカウントは、Etherscan上で見ることができます。ご自身のウォレットアドレスと0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03を入力して、表示の違いを確認してみて下さい。
+ヒントです。イーサリアムのアカウントは、Etherscan上で見ることができます。ご自身のウォレットアドレスと[0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03](https://etherscan.io/address/0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03)を入力して、表示の違いを確認してみて下さい。
 
 今回のブログでは、イーサリアムのアカウントについて紹介します。問題に答えることができた方も、まだ知らない発見があるかもしれません。最後まで読んでみてください。
 
@@ -35,7 +35,7 @@ EOAsでは、アカウントから送られたトランザクションの数を�
 
 ### ②ether balance
 
-アドレスが持つweiの量を表します。例えば、あるアカウントが1 ETH保持しているとします。その時のアカウントのバランスは、1,000,000,000,000,000,000 wei（０が１８個です）になります。どちらのアカウントもETHを受け取る、また送ることが可能です。その際にこのbalanceの値が更新されていきます。solidityでは、<address>.balanceで取得することが可能です。
+アドレスが持つweiの量を表します。例えば、あるアカウントが1 ETH保持しているとします。その時のアカウントのバランスは、1,000,000,000,000,000,000 wei（０が１８個です）になります。どちらのアカウントもETHを受け取る、また送ることが可能です。その際に、このbalanceの値が更新されていきます。solidityでは、<address>.balanceで取得することが可能です。
 
 ### ③codeHash
 
@@ -43,7 +43,7 @@ EVM上でアカウントが持つプログラムコードのハッシュ。ユ�
 
 ### ④storageRoot
 
-Merkle Patricia treeのルーツノードのハッシュ。アカウントのstorageは、Merkle Patricia treeで管理されています。そのルーツノードのハッシュになります。
+[Merkle Patricia tree](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/)のルーツノードのハッシュ。contract accountsのstorageは、Merkle Patricia treeで管理されています。そのルーツノードのハッシュになります。
 
 EOAsとcontract accountsでは、それぞれの保持するstate(codeHashとstorageRoot)に違いがあることが確認できました。これが最初に出した問題の答えです。Etherscanで確認すると、contract accountsではContractCreatorという項目で、誰がこのコントラクトをデプロイしたかを確認することができます。またcontractという項目をみると、ソースコードを見ることができます（コードがverifyされていない場合は、見ることができません。）
 
@@ -80,6 +80,9 @@ https://ethereum.org/en/developers/docs/accounts/
 
 State in Ethereum
 https://docs.polygon.technology/docs/edge/concepts/ethereum-state/#world-state
+
+PATRICIA MERKLE TREES
+https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/
 
 What is an Ethereum Address?
 https://info.etherscan.com/what-is-an-ethereum-address/#:~:text=An%20Ethereum%20address%20is%20a,receive%20funds%20from%20another%20party.
