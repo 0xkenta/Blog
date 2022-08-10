@@ -64,27 +64,27 @@ EOAsとcontract accountsでは、それぞれの保持するstate(codeHashとsto
 
 
 # 参考資料
-Ethereum Yellow Paper
+Ethereum Yellow Paper<br /> 
 https://ethereum.github.io/yellowpaper/paper.pdf
 
-Ethereum Whitepaper
+Ethereum Whitepaper<br /> 
 https://ethereum.org/en/whitepaper/
 
 Andreas M. Antonopoulos. Mastering Ethereum
 
-Introduction to Smart Contracts
+Introduction to Smart Contracts<br /> 
 https://docs.soliditylang.org/en/v0.8.15/introduction-to-smart-contracts.html?highlight=nonce#accounts
 
-ETHEREUM ACCOUNTS
+ETHEREUM ACCOUNTS<br /> 
 https://ethereum.org/en/developers/docs/accounts/
 
-State in Ethereum
+State in Ethereum<br /> 
 https://docs.polygon.technology/docs/edge/concepts/ethereum-state/#world-state
 
-PATRICIA MERKLE TREES
+PATRICIA MERKLE TREES<br /> 
 https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/
 
-What is an Ethereum Address?
+What is an Ethereum Address?<br /> 
 https://info.etherscan.com/what-is-an-ethereum-address/#:~:text=An%20Ethereum%20address%20is%20a,receive%20funds%20from%20another%20party.
 
 <!-- https://ethereum.stackexchange.com/questions/31809/why-do-contracts-start-with-nonce-1/32347#32347 -->
