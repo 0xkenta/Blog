@@ -51,7 +51,7 @@ EOAsとcontract accountsでは、それぞれの保持するstate(codeHashとsto
 
 ## 重要な相違点
 
-イーサリアムのworld stateは、トランザクションによって更新されます。単純化してworld stateの更新をみていきます。ユーザーはトランザクションを作成します。そして、作成したトランザクションにprivate keyで署名します。その後、Mempoolに送られマイニングにより、トランザクションはブロックチェーンのブロックに取り込まれます。これがworld state更新の流れになります。署名にprivate keyが使われることからも明らかですが、トランザクションを送ることができるのはEOAsのみになります。world stateの更新はEOAsがprivate keyで署名することから始まっているともいえます。contract accountsはトランザクションを送ることができません。このこともEOAsとcontract accountsの違いになります。
+イーサリアムのworld stateは、トランザクションによって更新されます。単純化してworld stateの更新をみていきます。ユーザーはトランザクションを作成します。そして、作成したトランザクションにprivate keyで署名します。その後、トランザクションはMempoolに送られます。マイニングにより、トランザクションはブロックチェーンのブロックに取り込まれます。これがworld state更新の流れになります。署名にprivate keyが使われることからも明らかですが、トランザクションを送ることができるのはEOAsのみになります。contract accountsはトランザクションを送ることができません。このこともEOAsとcontract accountsの違いになります。
 
 ### おまけ: なぜprivate keyが重要なのか？
 
