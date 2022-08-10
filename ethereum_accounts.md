@@ -47,12 +47,11 @@ EVM上でアカウントが持つプログラムコードのハッシュ。ユ�
 
 EOAsとcontract accountsでは、それぞれの保持するstate(codeHashとstorageRoot)に違いがあることが確認できました。これが最初に出した問題の答えです。Etherscanで確認すると、contract accountsではContractCreatorという項目で、誰がこのコントラクトをデプロイしたかを確認することができます。またcontractという項目をみると、ソースコードを見ることができます（コードがverifyされていない場合は、見ることができません。）
 
-しかし、両者の違いはstateだけではありません。最後にEOAsとcontract accountsの機能面での違いを一つ挙げます。
+しかし、両者の違いはstateだけではありません。最後にEOAsとcontract accountsのトランザクションからみていきます。
 
 ## 重要な相違点
 
-イーサリアムのworld stateはトランザクションによって更新されます。このトランザクションはEOAsによって作られます。具体的には、
-ユーザーはトランザクションを作成します。そして、作成したトランザクションにprivate keyで署名します。その後、トランザクションはブロックに取り込まれます。これによりworld stateが更新されます。private keyが使われることからも明らかですが、トランザクションを作成できるのはEOAsのみになります。このこともEOAsとcontract accountsの違いになります。
+イーサリアムのworld stateは、トランザクションによって更新されます。単純化してworld stateの更新をみていきます。ユーザーはトランザクションを作成します。そして、作成したトランザクションにprivate keyで署名します。その後、Mempoolに送られマイニングにより、トランザクションはブロックチェーンのブロックに取り込まれます。これがworld state更新の流れになります。署名にprivate keyが使われることからも明らかですが、トランザクションを送ることができるのはEOAsのみになります。world stateの更新はEOAsがprivate keyで署名することから始まっているともいえます。contract accountsはトランザクションを送ることができません。このこともEOAsとcontract accountsの違いになります。
 
 ### おまけ: なぜprivate keyが重要なのか？
 
@@ -60,7 +59,7 @@ EOAsとcontract accountsでは、それぞれの保持するstate(codeHashとsto
 
 # 最後に
 
-今回のブログではイーサリアムのアカウントについてみてきました。簡単なテーマのようですが、EVMやいくつかの重要なのEthereum Improvement Proposals (EIPs) を理解するときにも必要な知識です。また必要になったときに読み返してみてください。最後まで読んでいただきありがとうございました。
+今回のブログでは、イーサリアムのアカウントについてみてきました。簡単なテーマのようですが、EVMやいくつかの重要なのEthereum Improvement Proposals (EIPs) を理解するときにも必要な知識です。また必要になったときに読み返してみてください。最後まで読んでいただきありがとうございました。
 
 
 # 参考資料
