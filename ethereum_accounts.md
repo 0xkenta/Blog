@@ -87,9 +87,7 @@ https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-me
 What is an Ethereum Address?
 https://info.etherscan.com/what-is-an-ethereum-address/#:~:text=An%20Ethereum%20address%20is%20a,receive%20funds%20from%20another%20party.
 
-
-<!-- https://github.com/ethereumbook/ethereumbook/blob/develop/07smart-contracts-solidity.asciidoc#intro_chapter -->
-<!-- https://ethereum.stackexchange.com/questions/764/do-contracts-also-have-a-nonce -->
+<!-- https://ethereum.stackexchange.com/questions/31809/why-do-contracts-start-with-nonce-1/32347#32347 -->
 
 
 
