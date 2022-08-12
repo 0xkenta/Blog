@@ -1,4 +1,3 @@
-
 # タイトル: イーサリアムのアカウントについて
 
 # このブログの対象読者
@@ -34,6 +33,7 @@
 ### ①nonce
 
 EOAsでは、アカウントから送られたトランザクションの数を示します。一番最初のトランザクションのnonceは０を示し、それ以降トランザクションを送るたび１増加していきます。<br />
+
 contract accountsでは、アカウントから作られたコントラクトの数を示します。コントラクトが新しいコントラクトデプロイするとnonceが１増えます。(contract accountsのnonceは０ではなく１から始まります。)
 
 ### ②ether balance
@@ -46,7 +46,6 @@ EVM上でcontract accountsが持つプログラムコードのハッシュです
 
 ### ④storageRoot
 
-<!-- [Merkle Patricia tree](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/)のルーツノードのハッシュ。contract accountsのstorageは、Merkle Patricia treeで管理されています。そのルーツノードのハッシュになります。 -->
 contract accountsのstorageは、Merkle Patricia treeというデータ構造で管理されています。現在のstorageの状態を正確で効率的に表す値として、storageRoot（Merkle Patricia treeのルーツノードのハッシュ）が使われています。気になる方は、[Merkle Patricia tree](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/)を読んでみてください。
 
 EOAsとcontract accountsでは、それぞれの保持するstate(codeHashとstorageRoot)に違いがあることが確認できました。これが最初に出した問題の答えです。Etherscanで確認すると、contract accountsではContractCreatorという項目で、誰がこのコントラクトをデプロイしたかを確認することができます。またcontractという項目をみると、ソースコードを見ることができます（コードがverifyされていない場合は、見ることができません。）
@@ -55,12 +54,12 @@ EOAsとcontract accountsでは、それぞれの保持するstate(codeHashとsto
 
 ## 重要な相違点: EOAsはトランザクションを送ることができる。
 
-イーサリアムのworld stateは、トランザクションによって更新されます。単純化してworld stateの更新をみていきます。<br /> 
+イーサリアムのworld stateは、トランザクションによって更新されます。単純化してworld stateの更新をみていきます。<br />
 
-①ユーザーはトランザクションを作成します。<br /> 
-②作成したトランザクションにprivate keyで署名します。<br /> 
-③トランザクションはMempoolに送られます。<br /> 
-④マイニングにより、トランザクションはブロックチェーンのブロックに取り込まれます。<br /> 
+①ユーザーはトランザクションを作成します。<br />
+②作成したトランザクションにprivate keyで署名します。<br />
+③トランザクションはMempoolに送られます。<br />
+④マイニングにより、トランザクションはブロックチェーンのブロックに取り込まれます。<br />
 
 これがworld state更新の流れになります。署名にprivate keyが使われることからも明らかですが、トランザクションを送ることができるのはEOAsのみになります。contract accountsはトランザクションを送ることができません。このこともEOAsとcontract accountsの違いになります。
 
@@ -71,7 +70,6 @@ EOAsとcontract accountsでは、それぞれの保持するstate(codeHashとsto
 # 最後に
 
 今回のブログでは、イーサリアムのアカウントについて紹介しました。簡単なテーマのようですが、EVMやいくつかの重要なのEthereum Improvement Proposals (EIPs) を理解するときにも必要な知識です。また必要になったときに読み返してみてください。最後まで読んでいただきありがとうございました。
-
 
 # 参考資料
 Ethereum Yellow Paper<br /> 
