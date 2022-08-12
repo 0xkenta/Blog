@@ -38,21 +38,22 @@ contract accountsでは、アカウントから作られたコントラクトの
 
 ### ②ether balance
 
-アドレスが持つETH（単位はwei）を表します。例えば、あるアカウントが1 ETH保持しているとします。その時のアカウントのバランスは、1,000,000,000,000,000,000 wei（０が１８個です）になります。EOAsとcontract accountsはETHを受け取る、また送ることが可能です。その際に、このbalanceの値が更新されていきます。solidityでは、<address>.balanceで取得することが可能です。
+アドレスが持つETH（単位はwei）を表します。EOAs, contract accounts両方ともETHを受け取る、また送ることが可能です。その際に、このbalanceの値が更新されていきます。solidityでは、<address>.balanceで取得することが可能です。なお、1ETH=1,000,000,000,000,000,000 wei（０が１８個）です。
 
 ### ③codeHash
 
-EVM上でcontract accountsが持つプログラムコードのハッシュです。ユーザーがDappsを利用するときに実行されるスマートコントラクトのコードになります。スマートコントラクトは、デプロイした後に変更ができないと言われます。その理由は、このcodeHashを書き換えることができないためです。EOAsはコードを持たないため、空文字となります。
+EVM上でcontract accountsが持つプログラムコードのハッシュです。ユーザーがDappsを利用するときに実行されるスマートコントラクトのコードになります。スマートコントラクトがデプロイした後に変更できない理由は、このcodeHashを書き換えることが出来ないためです。EOAsはコードを持たないため、空文字となります。
 
 ### ④storageRoot
 
-[Merkle Patricia tree](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/)のルーツノードのハッシュ。contract accountsのstorageは、Merkle Patricia treeで管理されています。そのルーツノードのハッシュになります。
+<!-- [Merkle Patricia tree](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/)のルーツノードのハッシュ。contract accountsのstorageは、Merkle Patricia treeで管理されています。そのルーツノードのハッシュになります。 -->
+contract accountsのstorageは、Merkle Patricia treeというデータ構造で管理されています。現在のstorageの状態を正確で効率的に表す値として、storageRoot（Merkle Patricia treeのルーツノードのハッシュ）が使われています。気になる方は、[Merkle Patricia tree](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/)を読んでみてください。
 
 EOAsとcontract accountsでは、それぞれの保持するstate(codeHashとstorageRoot)に違いがあることが確認できました。これが最初に出した問題の答えです。Etherscanで確認すると、contract accountsではContractCreatorという項目で、誰がこのコントラクトをデプロイしたかを確認することができます。またcontractという項目をみると、ソースコードを見ることができます（コードがverifyされていない場合は、見ることができません。）
 
 しかし、両者の違いはstateだけではありません。最後にEOAsとcontract accountsのトランザクションからみていきます。
 
-## 重要な相違点
+## 重要な相違点: EOAsはトランザクションを送ることができる。
 
 イーサリアムのworld stateは、トランザクションによって更新されます。単純化してworld stateの更新をみていきます。<br /> 
 
