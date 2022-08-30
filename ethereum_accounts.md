@@ -2,9 +2,9 @@
 
 # このブログの対象読者
 
-①イーサリアムについて知りたい方<br />
-②暗号資産やNFTを触れたことがあり、背景で何が起こっているのか理解したい人<br />
-③スマートコントラクトを書いていて、EVM（Ethereum virtual machine）の知識を増やしたい方
+1. イーサリアムについて知りたい方<br />
+2. 暗号資産やNFTを触れたことがあり、背景で何が起こっているのか理解したい人<br />
+3. スマートコントラクトを書いていて、EVM（Ethereum virtual machine）の知識を増やしたい方
 
 # はじめに
 
@@ -30,23 +30,23 @@
 
 それぞれのアドレスにはアカウントのStateが紐づけられています。アカウントのstateは以下の４項目から成ります。
 
-### ①nonce
+### 1. nonce
 
 EOAsでは、アカウントから送られたトランザクションの数を示します。一番最初のトランザクションのnonceは０を示し、それ以降トランザクションを送るたび１増加していきます。<br />
 
 contract accountsでは、アカウントから作られたコントラクトの数を示します。コントラクトが新しいコントラクトデプロイするとnonceが１増えます。(contract accountsのnonceは０ではなく１から始まります。)
 
-### ②ether balance
+### 2. ether balance
 
 アドレスが持つETH（単位はwei）を表します。EOAs, contract accounts両方ともETHを受け取る、また送ることが可能です。その際に、このbalanceの値が更新されていきます。solidityでは、<address>.balanceで取得することが可能です。なお、1ETH=1,000,000,000,000,000,000 wei（０が１８個）です。
 
-### ③codeHash
+### 3. codeHash
 
 EVM上でcontract accountsが持つプログラムコードのハッシュです。ユーザーがDappsを利用するときに実行されるスマートコントラクトのコードになります。スマートコントラクトがデプロイした後に変更できない理由は、このcodeHashを書き換えることが出来ないためです。EOAsはコードを持たないため、空文字となります。
 
-### ④storageRoot
+### 4. storageRoot
 
-contract accountsのstorageは、Merkle Patricia treeというデータ構造で管理されています。現在のstorageの状態を正確で効率的に表す値として、storageRoot（Merkle Patricia treeのルーツノードのハッシュ）が使われています。気になる方は、[Merkle Patricia tree](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/)を読んでみてください。
+contract accountsのstorageは、Merkle Patricia treeというデータ構造で管理されています。現在のstorageの状態を正確で効率的に表す値として、storageRoot（Merkle Patricia treeのルーツノードのハッシュ）が使われています。気になる方は、[Merkle Patricia tree](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/)を読んでみてください。EOAsはこのデータ構造を保持しません。EOAsのstorageRootは空となります。
 
 EOAsとcontract accountsでは、それぞれの保持するstate(codeHashとstorageRoot)に違いがあることが確認できました。これが最初に出した問題の答えです。Etherscanで確認すると、contract accountsではContractCreatorという項目で、誰がこのコントラクトをデプロイしたかを確認することができます。またcontractという項目をみると、ソースコードを見ることができます（コードがverifyされていない場合は、見ることができません。）
 
@@ -56,10 +56,10 @@ EOAsとcontract accountsでは、それぞれの保持するstate(codeHashとsto
 
 イーサリアムのworld stateは、トランザクションによって更新されます。単純化してworld stateの更新をみていきます。<br />
 
-①ユーザーはトランザクションを作成します。<br />
-②作成したトランザクションにprivate keyで署名します。<br />
-③トランザクションはMempoolに送られます。<br />
-④マイニングにより、トランザクションはブロックチェーンのブロックに取り込まれます。<br />
+1. ユーザーはトランザクションを作成します。<br />
+2. 作成したトランザクションにprivate keyで署名します。<br />
+3. トランザクションはMempoolに送られます。<br />
+4. マイニングにより、トランザクションはブロックチェーンのブロックに取り込まれます。<br />
 
 これがworld state更新の流れになります。署名にprivate keyが使われることからも明らかですが、トランザクションを送ることができるのはEOAsのみになります。contract accountsはトランザクションを送ることができません。このこともEOAsとcontract accountsの違いになります。
 
