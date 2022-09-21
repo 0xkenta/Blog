@@ -111,7 +111,8 @@ const walletWithProvider = new ethers.Wallet(privateKey, provider);
 
 ## おまけ: なぜprivate keyが重要なのか？
 
-private keyを失うと勝手にトランザクションを実行されてしまいます。上記のコードで、ウォレットの定義に必要としたのはprivate keyのみです。private keyがあればウォレットを定義し、トランザクションに署名することが可能です。自分の資産(ETH,ERC20,NFT)を守るためにも、private keyはしっかり保管しましょう（絶対に他人に教えてはいけません）！開発の際に注意したい点は、間違ってprivate keyをいれたファイルをGitHub上で公開してしまうことです。[dotenv](https://www.npmjs.com/package/dotenv)を使ってprivate keyを管理することで、private keyの公開を防ぎましょう。また、faucetのみが入った開発専用のアカウントを使用することも、自身の暗号資産を守ることにつながります。
+private keyを失うと勝手にトランザクションを実行されてしまいます。上記のコードで、ウォレットの定義に必要としたのはprivate keyのみです。private keyがあればウォレットを定義し、トランザクションに署名することが可能です。自分の資産(ETH,ERC20,NFT)を守るためにも、private keyはしっかり保管しましょう（絶対に他人に教えてはいけません）！
+開発の際に注意したい点は、間違ってprivate keyをいれたファイルをGitHub上で公開してしまうことです。private keyを入れたファイルをcommitしないように注意しましょう。また、現実の資産に紐付いていない開発専用のアカウントを使用することも、自身の暗号資産を守ることにつながります。
 
 ## 2.　setAccountを実行するためのdataを作成する
 
@@ -133,7 +134,7 @@ const data = iface.encodeFunctionData("setAccount", [
 
 ## 3. 署名するデータをつくる
 
-署名がされるデータは以下のようになります。toには呼び出し先のコントラクトのアドレスが入ります。またsetAccountはpayableな関数なので、Maticをおくるためにvalueという項目も使用しています。最後のdataは、この直前に作成したsetAccountを実行するためのdataになります。
+署名がされるデータは以下のようになります。toには呼び出し先のコントラクトのアドレスが入ります。またsetAccountは、etherを受け取ることができるpayableな関数なので、etherをおくるためにvalueという項目も使用しています。最後のdataは、この直前に作成したsetAccountを実行するためのdataになります。
 
 ```
 const tx = {
@@ -157,7 +158,7 @@ await walletWithProvider.sendTransaction(tx)
 const { ethers } = require("ethers");
 
 async function main() {
-    const provider = ethers.getDefaultProvider("https://rpc-mumbai.maticvigil.com/") 
+    const provider = new ethers.providers.JsonRpcProvider('https://rpc-mainnet.maticvigil.com/');
 
     const privateKey = "0x your privatekey"
 
@@ -171,14 +172,14 @@ async function main() {
         "Andi",
     ])
 
-    const tx = {
+    const unsignedTx = {
         to: "0xC00C7AdfB5f1927ba43CdC7e0A8d0f4c360319E5",
         value: ethers.utils.parseEther("1.0"),
         data
     }
 
-    const result = await walletWithProvider.sendTransaction(tx)
-    console.log(result)
+    const tx = await walletWithProvider.sendTransaction(unsignedTx)
+    console.log(tx) // トランザクション情報を出力することもできる
 }
 
 main().catch((error) => {
