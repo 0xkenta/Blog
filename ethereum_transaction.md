@@ -112,6 +112,7 @@ const walletWithProvider = new ethers.Wallet(privateKey, provider);
 ## おまけ: なぜprivate keyが重要なのか？
 
 private keyを失うと勝手にトランザクションを実行されてしまいます。上記のコードで、ウォレットの定義に必要としたのはprivate keyのみです。private keyがあればウォレットを定義し、トランザクションに署名することが可能です。自分の資産(ETH,ERC20,NFT)を守るためにも、private keyはしっかり保管しましょう（絶対に他人に教えてはいけません）！
+
 開発の際に注意したい点は、間違ってprivate keyをいれたファイルをGitHub上で公開してしまうことです。private keyを入れたファイルをcommitしないように注意しましょう。また、現実の資産に紐付いていない開発専用のアカウントを使用することも、自身の暗号資産を守ることにつながります。
 
 ## 2.　setAccountを実行するためのdataを作成する
