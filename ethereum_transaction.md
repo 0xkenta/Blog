@@ -44,7 +44,7 @@
 
 ### value
 
-このトランザクションでto(recipient)に送られるETH（単位はwei）。
+このトランザクションでto(recipient)に送られるether（単位はwei）。
 
 ### gasLimitなどのガスに関する情報
 
@@ -56,7 +56,7 @@
 代表的なのがコントラクトの関数を呼び出すことです。例えば、マーケットプレイスでのNFTの購入を考えてみます。マーケットプレイスのコントラクトの中に、
 気に入ったＮＦＴをＥＴＨを支払って購入できる関数があるとします。ＥＴＨで販売されているＮＦＴを購入するには、データの内部でvalueを設定してＥＴＨを送金します。同時に気に入ったＮＦＴのIDを指定するため、dataには引数としてIDを入れます。このトランザクションのto(recipient)は呼び出すコントラクトのアドレスになります。
 
-他にもdataは設定せず、valueのみ指定することで友人にETHを送るトランザクションなども考えられます。この際のto(recipient)は、友人のアドレスになります。
+他にもdataは設定せず、valueのみ指定することで友人にetherを送るトランザクションなども考えられます。この際のto(recipient)は、友人のアドレスになります。
 
 ここからはコードを書いてトランザクションを実行していきます。
 
@@ -95,7 +95,7 @@ contract MonobundleDeposit {
 
 openAccountという関数は、コントラクトの内部にnameとbalanceを持つaccountsを作成します。このaccountsはopenAccountを呼び出したEOAsのアドレスに紐づけられています。balanceは関数を呼び出す際に送金されたetherの量、nameは引数_newNameにより更新されます。Node.jsとethers jsの使い方については、[こちら](https://docs.etherscan.io/tutorials/signing-raw-transactions)の記事１、２の項目を参考にしてください。
 
-Ether.jsを使ってopenAccountを呼び出すコードを書いていきます。次の４つを順に実行していきます。(トランザクションを実行する際に、ETHを送金します。ETHは送金され、アカウントのETHは減少します。大量のETHは送らないようにしましょう。)
+Ether.jsを使ってopenAccountを呼び出すコードを書いていきます。次の４つを順に実行していきます。(トランザクションを実行する際に、etherを送金します。etherは送金され、アカウントのetherは減少します。大量のetherは送らないようにしましょう。)
 
 1. private keyとproviderからウォレットを作成
 2. openAccountを実行するためのdataを作成する
