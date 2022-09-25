@@ -140,7 +140,7 @@ const data = iface.encodeFunctionData("openAccount", [
 
 ## 3. 署名するデータをつくる
 
-署名がされるデータは以下のようになります。toには呼び出し先のコントラクトのアドレスが入ります。またopenAccountは、etherを受け取ることができるpayableな関数なので、etherをおくるためにvalueという項目も使用しています。最後のdataは、この直前に作成したsetAccountを実行するためのdataになります。
+署名がされるデータは以下のようになります。toには呼び出し先のコントラクトのアドレスが入ります。またopenAccountは、etherを受け取ることができるpayableな関数なので、etherをおくるためにvalueという項目も使用しています。最後のdataは、この直前に作成したopenAccountを実行するためのdataになります。
 
 ```
 const unsignedTx = {
