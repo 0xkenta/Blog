@@ -1,14 +1,14 @@
 # このブログの対象読者
 
-1. イーサリアムについて知りたい方<br />
+1. イーサリアム、Ethereum virtual machine(EVM)について知りたい方<br />
 2. 暗号資産やNFTを触れたことがあり、背景で何が起こっているのか理解したい方<br />
-3. スマートコントラクトを書いていて、EVM（Ethereum virtual machine）の知識を増やしたい方
+3. スマートコントラクトを書いていて、EVMの知識を増やしたい方
 
 # はじめに
 
 [前回のブログ](https://zenn.dev/hokusai/articles/204a443fadcc21)では、イーサリアムのアカウントについて紹介しました。その中で、externally owned accounts(EOAs)のみがトランザクション作り、署名できることに触れました。
 
-今回のブログでは、トランザクションについて紹介します。このブログの最終目標は、MetaMaskなどのソフトウェアウォレットを使わずにトランザクションを実行することです。具体的にはEthers.jsを使用して、トランザクションを行います。前半部分でトランザクションについてまとめます。後半の部分では、プログラムを書いてトランザクションを実行していきます。エンジニアでない方も前半部分を読んで、トランザクションの知識を広げることができます。前回のブログでは、
+今回のブログでは、トランザクションについて紹介します。このブログの最終目標は、MetaMaskなどのソフトウェアウォレットを使わずにトランザクションを実行することです。具体的にはEthers.jsを使用して、トランザクションを行います。前半部分でトランザクションについてまとめます。後半の部分では、プログラムを書いてトランザクションを実行していきます。エンジニアでない方も前半部分を読んで、トランザクションの知識を広げることができます。
 
 # トランザクション
 
@@ -53,7 +53,7 @@
 
 以上が署名されるデータの内容になります。署名されるデータのなかで、特に重要な情報がdataとvalueです。この二つを組み合わせることで様々なトランザクションを実行することができます。
 
-代表的なのがコントラクトの関数を呼び出すことです。例えば、マーケットプレイスでのNFTの購入を考えてみます。マーケットプレイスのコントラクトの中に,
+代表的なのがコントラクトの関数を呼び出すことです。例えば、マーケットプレイスでのNFTの購入を考えてみます。マーケットプレイスのコントラクトの中に、
 気に入ったＮＦＴをＥＴＨを支払って購入できる関数があるとします。ＥＴＨで販売されているＮＦＴを購入するには、データの内部でvalueを設定してＥＴＨを送金します。同時に気に入ったＮＦＴのIDを指定するため、dataには引数としてIDを入れます。このトランザクションのto(recipient)は呼び出すコントラクトのアドレスになります。
 
 他にもdataは設定せず、valueのみ指定することで友人にETHを送るトランザクションなども考えられます。この際のto(recipient)は、友人のアドレスになります。
@@ -63,12 +63,12 @@
 
 # トランザクションを実行してみよう
 
-ここからはソフトウェアウォレットを使わずにトランザクションを実行していきます。テストネット上にデプロイされているコントラクトのstateをアップデートします。以下がPolygonのテストネットであるMumbaiにデプロイされているコントラクトのコードです。
+ここからはソフトウェアウォレットを使わずにトランザクションを実行していきます。テストネット上にデプロイされているコントラクトのstateをアップデートします。以下がイーサリアムのテストネットであるGoerliにデプロイされているコントラクトのコードです。MonobundleDepositは、簡易的な銀行口座を模したコントラクトです。
 
 ```
 pragma solidity 0.8.9;
 
-contract MonobundleBlogCode {
+contract MonobundleDeposit {
 
     struct Account {
         string name;
@@ -76,28 +76,35 @@ contract MonobundleBlogCode {
     }
 
     mapping(address => Account) public accounts;
+
+    event AccoundCreated(address userAddress, string name, uint256 balance);
+    
     constructor() {}
 
-    function setAccount(string calldata _newName) external payable {
+    function openAccount(string calldata _newName) external payable {
         Account storage account = accounts[msg.sender];
+        require(bytes(account.name).length == 0, "ACCOUNT EXISTS");
+
         account.name = _newName;
-        account.balance += msg.value;
+        account.balance = msg.value;
+
+        emit AccoundCreated(msg.sender, _newName, msg.value);
     }
 }
 ```
 
-setAccountという関数は、コントラクトの内部にnameとbalanceを持つaccountsを作成します。このaccountsはsetAccountを呼び出したEOAsのアドレスに紐づけられています。balanceは関数を呼び出す際に送金されたMatic（Polygonのネイティブトークン）の量、nameは引数_newNameにより更新されます。Node.jsとethers jsの使い方については、[こちら](https://docs.etherscan.io/tutorials/signing-raw-transactions)の記事１、２の項目を参考にしてください。
+openAccountという関数は、コントラクトの内部にnameとbalanceを持つaccountsを作成します。このaccountsはopenAccountを呼び出したEOAsのアドレスに紐づけられています。balanceは関数を呼び出す際に送金されたetherの量、nameは引数_newNameにより更新されます。Node.jsとethers jsの使い方については、[こちら](https://docs.etherscan.io/tutorials/signing-raw-transactions)の記事１、２の項目を参考にしてください。
 
-Ether.jsを使ってsetAccountを呼び出すコードを書いていきます。次の４つを順に実行していきます。
+Ether.jsを使ってopenAccountを呼び出すコードを書いていきます。次の４つを順に実行していきます。(トランザクションを実行する際に、ETHを送金します。ETHは送金され、アカウントのETHは減少します。大量のETHは送らないようにしましょう。)
 
 1. private keyとproviderからウォレットを作成
-2. setAccountを実行するためのdataを作成する
+2. openAccountを実行するためのdataを作成する
 3. 署名するデータをつくる
 4. トランザクションを送る
 
 ## 1. private keyとproviderからウォレットを定義する
 
-Ethers.jsのnew Wallet ( privateKey [ , provider ] )を使って、ウォレットを定義します。コントラクトがデプロイされているネットワークは、mumbaiです。このネットワークにアクセスするために、mumbaiに接続されたウォレットを用意します。privateKeyと書かれた部分には、ご自身のprivateKeyを書き込んでください。
+Ethers.jsのnew Wallet ( privateKey [ , provider ] )を使って、ウォレットを定義します。コントラクトがデプロイされているネットワークは、Goerliです。このネットワークにアクセスするために、Goerliに接続されたウォレットを用意します。privateKeyと書かれた部分には、ご自身のprivateKeyを書き込んでください。
 
 ```
 const provider = ethers.getDefaultProvider("https://rpc-mumbai.maticvigil.com/") 
@@ -113,13 +120,13 @@ private keyを失うと勝手にトランザクションを実行されてしま
 
 開発の際に注意したい点は、間違ってprivate keyをいれたファイルをGitHub上で公開してしまうことです。private keyを入れたファイルをcommitしないように注意しましょう。また、現実の資産に紐付いていない開発専用のアカウントを使用することも、自身の暗号資産を守ることにつながります。
 
-## 2.　setAccountを実行するためのdataを作成する
+## 2.openAccountを実行するためのdataを作成する
 
 呼び出す関数と引数を指定してきます。
 
 最初にnew ethers.utils.Interface( abi )でインターフェースを作成します。今回のAbi（Application Binary Interface ）はsolidityのコンパイラーが作成したものではなく、簡素化のため手書きのものを使用しています。
 
-次に、interface.encodeFunctionData( fragment [ , values ] )を使います。encodeFunctionDataを使用することによって、呼び出したい関数とその関数が必要とする引数をエンコードすることができます。encodeFunctionDataの最初の引数には、呼び出したい関数の名前を記述します。二つ目の引数である配列の中に、呼び出す関数が要求する引数を入れます。setAccountではstring calldata _newNameというパラメーターが必要なので、ここでは"Andi"というstringを入れました。ご自身の名前など好きな名前を入れてください。dataはこれで完成です。
+次に、interface.encodeFunctionData( fragment [ , values ] )を使います。encodeFunctionDataを使用することによって、呼び出したい関数とその関数が必要とする引数をエンコードすることができます。encodeFunctionDataの最初の引数には、呼び出したい関数の名前を記述します。二つ目の引数である配列の中に、呼び出す関数が要求する引数を入れます。openAccountではstring calldata _newNameというパラメーターが必要なので、ここでは"Andi"というstringを入れました。ご自身の名前など好きな名前を入れてください。dataはこれで完成です。
 
 ```
 const iface = new ethers.utils.Interface([
@@ -133,7 +140,7 @@ const data = iface.encodeFunctionData("setAccount", [
 
 ## 3. 署名するデータをつくる
 
-署名がされるデータは以下のようになります。toには呼び出し先のコントラクトのアドレスが入ります。またsetAccountは、etherを受け取ることができるpayableな関数なので、etherをおくるためにvalueという項目も使用しています。最後のdataは、この直前に作成したsetAccountを実行するためのdataになります。
+署名がされるデータは以下のようになります。toには呼び出し先のコントラクトのアドレスが入ります。またopenAccountは、etherを受け取ることができるpayableな関数なので、etherをおくるためにvalueという項目も使用しています。最後のdataは、この直前に作成したsetAccountを実行するためのdataになります。
 
 ```
 const tx = {
@@ -145,13 +152,13 @@ const tx = {
 
 ## 4. トランザクションを送る
 
-署名をして、ネットワークにおくります。署名の対象はすべての項目を含んでいませんでした。例えば、nonce, gasLimitの情報がありません。sendTransactionはこれらの項目を自動で追加し、さらに署名もしてくれます。
+sendTransaction()という関数を使って、署名、トランザクションの送信を行います。ここで勘の良い方はお気づきかもしれませんが、「3. 署名するデータをつくる」ではnonce, gasLimitなどの情報を含んでいませんでした。これは、 sendTransaction()関数が自動でそれらの項目を設定してくれるためです。（手動で指定することもできます。）
 
 ```
 await walletWithProvider.sendTransaction(tx)
 ```
 
-コードを実行して、トランザクションが成功したか確認していきましょう。[mumbaiのpolygonscan](https://mumbai.polygonscan.com/)上で自分のアドレスを検索します。Transactionsの一番上にMETHODがsetAccountになっていて、Toが0xC00C7AdfB5f1927ba43CdC7e0A8d0f4c360319E5であるトランザクションを発見できたら、今回の目標は達成です。[0xC00C7AdfB5f1927ba43CdC7e0A8d0f4c360319E5](https://mumbai.polygonscan.com/address/0xC00C7AdfB5f1927ba43CdC7e0A8d0f4c360319E5#code)のRead contractからも、accountsが送金したMaticの量と名前で更新されていることが確認できると思います。今回使用したコードをもう一度まとめておきます。
+コードを実行して、トランザクションが成功したか確認していきましょう。[GoerliのEtherscan](https://mumbai.polygonscan.com/)上で自分のアドレスを検索します。Transactionsの一番上にMETHODがopenAccountになっていて、Toが0xC00C7AdfB5f1927ba43CdC7e0A8d0f4c360319E5であるトランザクションを発見できたら、今回の目標は達成です。[0xC00C7AdfB5f1927ba43CdC7e0A8d0f4c360319E5](https://mumbai.polygonscan.com/address/0xC00C7AdfB5f1927ba43CdC7e0A8d0f4c360319E5#code)のRead contractからも、accountsが送金したetherの量と名前で更新されていることが確認できると思います。今回使用したコードをもう一度まとめておきます。
 
 ```
 const { ethers } = require("ethers");
