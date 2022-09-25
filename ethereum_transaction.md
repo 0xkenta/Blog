@@ -107,9 +107,9 @@ Ether.jsを使ってopenAccountを呼び出すコードを書いていきます�
 Ethers.jsのnew Wallet ( privateKey [ , provider ] )を使って、ウォレットを定義します。コントラクトがデプロイされているネットワークは、Goerliです。このネットワークにアクセスするために、Goerliに接続されたウォレットを用意します。privateKeyと書かれた部分には、ご自身のprivateKeyを書き込んでください。
 
 ```
-const provider = ethers.getDefaultProvider("https://rpc-mumbai.maticvigil.com/") 
+const provider = ethers.getDefaultProvider("goerli");
 
-const privateKey = "0xprivatekey"
+const privateKey = "0x your private key"
 
 const walletWithProvider = new ethers.Wallet(privateKey, provider);
 ```
@@ -130,11 +130,11 @@ private keyを失うと勝手にトランザクションを実行されてしま
 
 ```
 const iface = new ethers.utils.Interface([
-    "function setAccount(string calldata _newName) payable"    
+    "function openAccount(string calldata _newName) payable"    
 ])
 
-const data = iface.encodeFunctionData("setAccount", [
-    "Andi"
+const data = iface.encodeFunctionData("openAccount", [
+    "Andi",
 ])
 ```
 
@@ -143,9 +143,9 @@ const data = iface.encodeFunctionData("setAccount", [
 署名がされるデータは以下のようになります。toには呼び出し先のコントラクトのアドレスが入ります。またopenAccountは、etherを受け取ることができるpayableな関数なので、etherをおくるためにvalueという項目も使用しています。最後のdataは、この直前に作成したsetAccountを実行するためのdataになります。
 
 ```
-const tx = {
-    to: "0xC00C7AdfB5f1927ba43CdC7e0A8d0f4c360319E5",
-    value: ethers.utils.parseEther("1.0"),
+const unsignedTx = {
+    to: "0xE1cC7A816521cD5C67a5b555151e82721666c275",
+    value: ethers.utils.parseEther("0.0005"),
     data
 }
 ```
@@ -155,37 +155,37 @@ const tx = {
 sendTransaction()という関数を使って、署名、トランザクションの送信を行います。ここで勘の良い方はお気づきかもしれませんが、「3. 署名するデータをつくる」ではnonce, gasLimitなどの情報を含んでいませんでした。これは、 sendTransaction()関数が自動でそれらの項目を設定してくれるためです。（手動で指定することもできます。）
 
 ```
-await walletWithProvider.sendTransaction(tx)
+const tx = await walletWithProvider.sendTransaction(unsignedTx)
 ```
 
-コードを実行して、トランザクションが成功したか確認していきましょう。[GoerliのEtherscan](https://mumbai.polygonscan.com/)上で自分のアドレスを検索します。Transactionsの一番上にMETHODがopenAccountになっていて、Toが0xC00C7AdfB5f1927ba43CdC7e0A8d0f4c360319E5であるトランザクションを発見できたら、今回の目標は達成です。[0xC00C7AdfB5f1927ba43CdC7e0A8d0f4c360319E5](https://mumbai.polygonscan.com/address/0xC00C7AdfB5f1927ba43CdC7e0A8d0f4c360319E5#code)のRead contractからも、accountsが送金したetherの量と名前で更新されていることが確認できると思います。今回使用したコードをもう一度まとめておきます。
+コードを実行して、トランザクションが成功したか確認していきましょう。[GoerliのEtherscan](https://goerli.etherscan.io/)上で自分のアドレスを検索します。Transactionsの一番上にToが0xE1cC7A816521cD5C67a5b555151e82721666c275であるトランザクションを発見できたら、今回の目標は達成です。[0xE1cC7A816521cD5C67a5b555151e82721666c275](https://goerli.etherscan.io/address/0xE1cC7A816521cD5C67a5b555151e82721666c275#readContract)のRead contractからも、accountsが送金したetherの量と名前で更新されていることが確認できると思います。今回使用したコードをもう一度まとめておきます。
 
 ```
 const { ethers } = require("ethers");
 
 async function main() {
-    const provider = new ethers.providers.JsonRpcProvider('https://rpc-mainnet.maticvigil.com/');
+    const provider = ethers.getDefaultProvider("goerli");
 
-    const privateKey = "0x your privatekey"
+    const privateKey = "0x your private key"
 
     const walletWithProvider = new ethers.Wallet(privateKey, provider);
 
     const iface = new ethers.utils.Interface([
-        "function setAccount(string calldata _newName) payable"    
+        "function openAccount(string calldata _newName) payable"    
     ])
 
-    const data = iface.encodeFunctionData("setAccount", [
+    const data = iface.encodeFunctionData("openAccount", [
         "Andi",
     ])
 
     const unsignedTx = {
-        to: "0xC00C7AdfB5f1927ba43CdC7e0A8d0f4c360319E5",
-        value: ethers.utils.parseEther("1.0"),
+        to: "0xE1cC7A816521cD5C67a5b555151e82721666c275",
+        value: ethers.utils.parseEther("0.0005"),
         data
     }
 
     const tx = await walletWithProvider.sendTransaction(unsignedTx)
-    console.log(tx) // トランザクション情報を出力することもできる
+    console.log(tx)
 }
 
 main().catch((error) => {
