@@ -33,6 +33,12 @@ LooksRareにおいても、X2Y2と同様に総供給量の１２％のLOOKSがAi
 
 ここからは、LooksRareの仕掛けたvampire attackの結果を確認していきたい。LooksRareのAirdropの最終日は、２０２２年の３月２２日。まず最初に２０２２年のNFTの取引高からみるOpenSeaとLooksRareのマーケットシェア推移をみていく。
 
+![image share per volume](./image/share_per_volume1.png)
+
+取引高によるマーケットシェアの推移をみると、LooksRareは一時期シェアを落とす時期がもあるが、一定のシェアを維持していることが分かる。
+
+また、
+
 
 # 僕が考えるマーケットプレイスへの対処法
 
