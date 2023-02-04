@@ -37,7 +37,9 @@ LooksRareにおいても、X2Y2と同様に総供給量の１２％のLOOKSがAi
 
 取引高によるマーケットシェアの推移をみると、LooksRareは一時期シェアを落とす時期がもあるが、一定のシェアを維持していることが分かる。
 
-また、
+次に取引量におけるマーケットシェアに関するチャートを見ていく。
+
+![image share per transaction amount](https://github.com/0xkenta/Blog/blob/main//image/market_share_per_transaction_count.png)
 
 
 # 僕が考えるマーケットプレイスへの対処法
