@@ -1,7 +1,7 @@
 # Duration
-start: 15:30
-pause: 17:30
-restart: 20:30
+start: 15:30<br />
+pause: 17:30<br />
+restart: 20:30<br />
 end: 
 
 # NFTマーケットプレイスにおけるvampire attackへの対処法について
