@@ -43,14 +43,18 @@ LooksRareにおいても、X2Y2と同様に総供給量の１２％のLOOKSがAi
 
 取引量におけるマーケットシェアからは、vampire attackによるシェアの獲得をみることはできない。
 
-以上のことから、LooksRareではNFT一つあたりの取引高が多いことが予想される。実際に以下のチャートが示す通り、Average Sale Size (ETH)はLooksRareがOpenSeaを上回っていることが分かる。
+以上のことから、LooksRareではNFT一つあたりの取引価格が高いことが予想される。実際に以下のチャートが示す通り、Average Sale Size (ETH)はLooksRareがOpenSeaを上回っていることが分かる。
 
 ![image share per transaction amount](https://github.com/0xkenta/Blog/blob/main//image/nft_average_sale_size.png)
 
 
 # 僕が考えるマーケットプレイスへの対処法
 
+LooksRareのNFT一つあたりの取引価格が高いことから、OpenSeaにおいて価格の高いNFTに対してインセンティブ設計を行うことを提案したい。一つ目は、高価格帯のNFTの手数料を低くすることである。単価の高いNFTの取引手数料をLooksRare以下にすることで、高価格帯の取引を活性化する。二つ目として、複数の高価格帯のNFTを取引するユーザーにキャッシュバックを行うことである。この二つの政策により、取引高におけるマーケットシェアが改善され、取引高、取引量におけるマーケットシェアでトップに立つことを目指す。
+
 # 結論
+
+vampire attackにおける対策は、前もって行えるものではないのではないだろうか。適切な防衛策は、vampire attack後に、どの領域において競合にユーザーを取り込まれたかを考えることだ。LooksRareでは価格の高いNFTが取引されていることが確認された。このことから、価格の高いNFTを取引するユーザーへのインセンティブが重要になるのではないだろうか。今回はLooksRareとOpenSeaの例から、vampire attackへの対処法を考えた。しかし、OpenSeaとX2Y2を比較した場合には、他の結果が出ていたことも考えられる。これからも個々の事例を考えていきたいと思う。
 
 # 参考資料
 - Vampire Attack Explained: An Incentive-Based Marketing Tactic That Does the Trick
@@ -69,4 +73,4 @@ https://twitter.com/looksrare/status/1502612671749058561?lang=en
 
 https://dune.com/999777/hildobby-nft-market-overview
 
-
+https://dune.com/queries/1622353/2688987
