@@ -2,11 +2,11 @@
 start: 15:30<br />
 pause: 17:30<br />
 restart: 20:30<br />
-end: 
+end: 22:30<br />
 
 # NFTマーケットプレイスにおけるvampire attackへの対処法について
 
-最初にvampire attackがどのようなものであるかみていく。次に、実際に起こったNFTマーケットプレイスでのvampire attackを紹介したい。そして、マーケットプレイスにおけるvampire attackへの対処法を提示していく。
+最初にvampire attackがどのようなものであるかをみていく。次に、実際に起こったNFTマーケットプレイスでのvampire attackを紹介したい。そして、マーケットプレイスにおけるvampire attackへの対処法を提示していく。
 
 # vampire attackとは？
 
