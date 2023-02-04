@@ -41,6 +41,12 @@ LooksRareにおいても、X2Y2と同様に総供給量の１２％のLOOKSがAi
 
 ![image share per transaction amount](https://github.com/0xkenta/Blog/blob/main//image/market_share_per_transaction_count.png)
 
+取引量におけるマーケットシェアからは、vampire attackによるシェアの獲得をみることはできない。
+
+以上のことから、LooksRareではNFT一つあたりの取引高が多いことが予想される。実際に以下のチャートが示す通り、Average Sale Size (ETH)はLooksRareがOpenSeaを上回っていることが分かる。
+
+![image share per transaction amount](https://github.com/0xkenta/Blog/blob/main//image/nft_average_sale_size.png)
+
 
 # 僕が考えるマーケットプレイスへの対処法
 
@@ -60,5 +66,7 @@ https://docs.x2y2.io/tokens/rewards/opensea-airdrop
 https://docs.looksrare.org/guides/faqs/what-is-the-looks-airdrop
 
 https://twitter.com/looksrare/status/1502612671749058561?lang=en
+
+https://dune.com/999777/hildobby-nft-market-overview
 
 
